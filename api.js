@@ -20,8 +20,12 @@ export async function fetchMainData(){
 
         const data = await response.json();
         console.log(data);
+        model.data.items = Array.isArray(data) ? data : [data]; 
+        console.log("New data in Model:", model.data.items);
     } catch (error){
         console.error(error.message);
     }
 
 }
+
+

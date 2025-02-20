@@ -3,9 +3,14 @@ import { model } from "./model.js";
 import { changePage, renderPage } from "./controller.js";
 import { fetchMainData } from "./api.js";
 
-updateView();
+
 window.changePage = changePage;
-fetchMainData()
+startUp()
+
+async function startUp(){
+    await fetchMainData();
+    updateView();
+}
 export function updateView(){
     model.app.display.innerHTML = /*HTML*/ `
     <header>${navbar()}</header>
