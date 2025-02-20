@@ -6,7 +6,7 @@ updateView();
 function updateView(){
     model.app.display.innerHTML = /*HTML*/ `
     <header>${navbar()}</header>
-    <main>${renderPage("home")}</main>
+    <main>${renderPage()}</main>
     <footer></footer>
  
     `;
@@ -14,8 +14,8 @@ function updateView(){
 }
 
 
-function renderPage(pageName) {
-    const page = model.app.pages.find(p => p.name === pageName);
+function renderPage() {
+    const page = model.app.pages.find(p => p.name === model.app.currentPage);
     if (page) {
         return page.path; 
     }
@@ -24,10 +24,20 @@ function renderPage(pageName) {
 function navbar(){
     return /*HTML*/ `
     <ul>
-        <li>Option 1</li>
-        <li>Option 2</li>
-        <li>Option 3</li>
+        <li onclick="changePage('home')">Home</li>
+        <li onclick="changePage('product')">Product test</li>
+        <li onclick="changePage('checkout')">Checkout test</li>
+        <li onclick="changePage('confirmation')">Confirmation test</li>
     </ul>
     
     `;
 }
+
+function changePage(option){
+    if(model.app.pages.includes(option)){
+        model.app.currentPage = option;
+    }
+    updateView();
+}
+
+
