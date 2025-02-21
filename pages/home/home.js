@@ -17,10 +17,28 @@ async function displayItems(){
     try{
         const data = await fetchMainData();
         const list = data || [];
-        console.log("list: " + list)
+        // console.log("list: " + list)
         let items = '';
         list.forEach(element => {
-            items += `<p>Title: ${element.title}</p>`;
+            items += /*HTML*/`
+            <section class="flex col">
+
+                <h3>${element.title}</h3>
+
+                <div class="list-image">
+                    <img src="${element.image.url}" alt="${element.image.alt}">
+                </div>
+
+                <div class="flex row">
+                    <p>Price</p>
+                    <p>${element.price}</p>
+                </div>
+
+            </section>
+            `;
+
+
+
             console.log("title: " + element.title)
         });
         return items;

@@ -12,7 +12,6 @@ export function changePage(option){
 export async function renderPage() {
     const page = model.app.pages.find(p => p.name === model.app.currentPage);
     if (page && typeof page.path === "function") {
-        console.log("Executing function for page:", page.name);
         return await page.path(); 
     }
 

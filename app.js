@@ -8,14 +8,11 @@ window.changePage = changePage;
 startUp()
 
 async function startUp(){
-    await fetchMainData();
     updateView();
 }
 export async function updateView(){
-    console.log("Updating view...");
     const content = await renderPage(); 
-    console.log("Rendered content:", content);
-    
+
     model.app.display.innerHTML = /*HTML*/ `
     <header>${navbar()}</header>
     <main>${content}</main>
