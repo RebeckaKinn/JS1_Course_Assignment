@@ -10,6 +10,7 @@ window.changePage = changePage;
 window.changeAmount = changeAmount;
 
 export function cartView(){
+    console.log("cart length:", model.input.cart.length)
     return /*HTML*/`
     <div>
         <div>
@@ -22,7 +23,9 @@ export function cartView(){
                 <b>$${calculateTotal(model.input.cart)}</b>
             </p>
             <div>
-                <button class="square" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
+                ${model.input.cart.length <= 0 ? `` : /*HTML*/`
+                    <button class="square" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
+                    `}
             </div>
         </section>
     </div>
