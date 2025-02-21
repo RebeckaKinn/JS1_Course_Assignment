@@ -1,11 +1,9 @@
 
 
 
-.red{
-    color: red;
-}
+
 
 .discount{
-    color: gray;
+    color: var(--color-gray-transparent);
     text-decoration:line-through;
 }

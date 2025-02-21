@@ -1,0 +1,16 @@
+:root{
+    --color-main: #66c0f4;
+    --color-middel-blue: #2a475e;
+    --color-dark-blue: #1b2838;
+    --color-dark-gray: #171a21;
+    --color-off-white: #c7d5e0;
+
+    --color-black:#1E1E1E;
+    --color-white: #F5F5F5;
+    --color-shadow: #1e1e1e35;
+
+    --color-highlighted: red;
+    --color-gray-transparent: rgba(128, 128, 128, 0.811);
+
+    --main-font-family: Arial, sans-serif;
+}

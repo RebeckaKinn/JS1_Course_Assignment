@@ -22,7 +22,7 @@ export function cartView(){
                 <b>$${calculateTotal(model.input.cart)}</b>
             </p>
             <div>
-                <button onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
+                <button class="square" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
             </div>
         </section>
     </div>
@@ -50,9 +50,9 @@ function cartDisplay(){
                 <div>
                     <b>QTY</b>
                     <div>
-                        <button onclick="changeAmount('${element.id}', false)">&minus;</button>
+                        <button class="circle" onclick="changeAmount('${element.id}', false)">&minus;</button>
                         <b>${element.amount}</b>
-                        ${element.amount <= 4 ? /*HTML*/`<button onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
+                        ${element.amount <= 4 ? /*HTML*/`<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
                     </div>
                 </div>
 
@@ -63,7 +63,7 @@ function cartDisplay(){
                 </div>
 
                 <div>
-                    <button onclick="removeFromCart('${element.id}')">&#10005;</button>
+                    <button class="square" onclick="removeFromCart('${element.id}')">&#10005;</button>
                 </div>
             </div>
 

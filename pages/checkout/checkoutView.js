@@ -22,7 +22,7 @@ export function checkoutView(){
             <b>$${calculateTotal(model.input.cart)}</b>
         </p>
         <div>
-            <button onclick="checkoutHandeling()">Order and Pay</button>
+            <button class="square" onclick="checkoutHandeling()">Order and Pay</button>
         </div>
     </section>
     `;
@@ -49,9 +49,9 @@ function checkoutDisplay(){
                 <div>
                     <b>QTY</b>
                     <div>
-                        <button onclick="changeAmount('${element.id}', false)">&minus;</button>
+                        <button class="circle" onclick="changeAmount('${element.id}', false)">&minus;</button>
                         <b>${element.amount}</b>
-                        ${element.amount <= 4 ? /*HTML*/`<button onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
+                        ${element.amount <= 4 ? /*HTML*/`<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
                     </div>
                 </div>
                 <div>
@@ -62,7 +62,7 @@ function checkoutDisplay(){
                     <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
                 </div>
                 <div>
-                    <button onclick="removeFromCart('${element.id}')">&#10005;</button>
+                    <button class="square" onclick="removeFromCart('${element.id}')">&#10005;</button>
                 </div>
             </div>
 

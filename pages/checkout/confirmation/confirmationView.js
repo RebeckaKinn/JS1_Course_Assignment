@@ -7,8 +7,8 @@ window.findRecentOrder = findRecentOrder;
 export async function confirmationView(){
     const content = await getOrderInformation();
     return /*HTML*/`
-    <div style="font-family: Arial, sans-serif; padding: 20px; max-width: 600px; margin: auto;">
-            <h1 style="color: #4CAF50; text-align: center;">Order Confirmation</h1>
+        <div>
+            <h1 class="main-color">Order Confirmation</h1>
             <p>Thank you for your purchase!</p>
             <div>${content}</div>
             <p>We will send a confirmation email with further details.</p>

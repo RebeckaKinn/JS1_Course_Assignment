@@ -1,0 +1,7 @@
+.red{
+    color: var(--color-highlighted);
+}
+
+.main-color{
+    color: var(--color-main);
+}

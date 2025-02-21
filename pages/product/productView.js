@@ -38,7 +38,7 @@ async function displayContent(){
                         </div>
                     </div>
 
-                    <button onclick="addToCart('${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
+                    <button class="square" onclick="addToCart('${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
                 </section>
             `;
         } else {
