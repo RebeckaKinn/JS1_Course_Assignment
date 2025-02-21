@@ -4,16 +4,27 @@ import { removeFromCart } from "../../controller.js";
 window.removeFromCart = removeFromCart;
 export function checkoutView(){
     return /*HTML*/`
-    <h1>Checkout view here</h1>
+    <h1>Checkout</h1>
+    <div>
+        <h2>${getAmountOfItemsInCart()} items in cart</h2>
+    </div>
     <section>${checkoutDisplay()}</section>
     `;
+}
+
+function getAmountOfItemsInCart(){
+    let amount = 0;
+    model.input.cart.forEach((element) => {
+        amount += element.amount;
+    })
+    return amount;
 }
 
 function checkoutDisplay(){
     let items = '';
     if(model.input.cart.length <= 0){
         items = /*HTML*/`
-        <h2>No items in cart</h2>
+        <h2>Empty</h2>
         `;
     }
     model.input.cart.forEach((element) => {
@@ -27,13 +38,14 @@ function checkoutDisplay(){
 
             <div class="flex col">
                 <div>
+                    <b>QTY</b>
                     <p>${element.amount}</p>
                 </div>
                 <div>
-                <b>Price</b>
+                <b>PRICE</b>
                     ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}
                 </div>
-                    <b>Subtotal</b>
+                    <b>SUBTOTAL</b>
                     <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
                 </div>
                 <div>
