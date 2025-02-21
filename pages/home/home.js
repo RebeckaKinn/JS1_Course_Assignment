@@ -1,7 +1,8 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
+import { chosenProduct } from "../../controller.js";
 
-
+window.chosenProduct = chosenProduct;
 export async function homeView(){
     const items = await displayItems();
 
@@ -17,7 +18,7 @@ async function displayItems(){
     try{
         const data = await fetchMainData();
         const list = data || [];
-        // console.log("list: " + list)
+
         let items = '';
         list.forEach(element => {
             items += /*HTML*/`
@@ -25,7 +26,7 @@ async function displayItems(){
 
                 <h3>${element.title}</h3>
 
-                <div class="list-image">
+                <div onclick="chosenProduct('${element.id}')" class="list-image">
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
 
@@ -47,3 +48,5 @@ async function displayItems(){
         return `<p>Error loading items</p>`;
     }
 }
+
+

@@ -18,3 +18,9 @@ export async function renderPage() {
     console.error("Page not found or path is not a function:", page);
     return "<p>Page not found</p>";
 }
+
+export function chosenProduct(id){
+    model.input.currentId = id;
+    console.log(model.input.currentId)
+    changePage(model.app.pages[1].name);
+}

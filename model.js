@@ -28,7 +28,7 @@ export const model = {
     },
 
     input:{
-
+        currentId: '',
     },
 
     data:{
