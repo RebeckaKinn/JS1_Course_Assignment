@@ -6,8 +6,21 @@ window.chosenProduct = chosenProduct;
 export async function homeView(){
     const items = await displayItems();
 
-    return `
-    <h1>Welcome to Home Page</h1>
+    return /*HTML*/`
+    <h1>Welcome to PlayBox – Your Ultimate Gaming Destination!</h1>
+    <p>Discover the latest and greatest games right here at PlayBox! Whether you're into action-packed adventures, thrilling RPGs, or competitive multiplayer battles, we have something for every gamer. Explore top-rated titles, exclusive deals, and must-play classics—all in one place.</p>
+    <ul>
+        <li>
+            <p>🔥 New Releases & Bestsellers</p>
+        </li>
+        <li>
+            <p>🎮 Exclusive Discounts & Special Offers</p>
+        </li>
+        <li>
+            <p>🌍 Games for Every Platform & Genre</p>
+        </li>
+    </ul>
+    <p>Find your next favorite game below and start playing today! 🚀👇</p>
     <div>${items}</div>
     
     `;

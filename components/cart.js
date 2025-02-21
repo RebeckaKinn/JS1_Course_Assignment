@@ -9,6 +9,8 @@ window.getAmountOfItemsInCart = getAmountOfItemsInCart;
 window.changePage = changePage;
 window.changeAmount = changeAmount;
 
+//use a cart logo with updateble number, toggle
+
 export function cartView(){
     console.log("cart length:", model.input.cart.length)
     return /*HTML*/`

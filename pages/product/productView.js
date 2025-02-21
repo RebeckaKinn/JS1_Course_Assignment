@@ -8,7 +8,6 @@ export async function productView(){
     const content = await displayContent();
     return /*HTML*/`
     <div>
-        <h1>This is the product page</h1>
         <section>${content}</section>
     <div>
     `;
@@ -20,7 +19,7 @@ async function displayContent(){
         if (data) {
             return /*HTML*/`
                 <section class="flex col">
-                    <h2>${data.title}</h2>
+                    <h1>${data.title}</h1>
 
                     <div>
                         <img src="${data.image.url}" alt="${data.image.alt}">
