@@ -26,7 +26,7 @@ Process
 - Use API to get data information
 (One of theese: 
     Rainy Days API - Outdoor clothing - https://docs.noroff.dev/docs/v2/e-commerce/rainy-days 
-    GameHub API - Video games - https://docs.noroff.dev/docs/v2/e-commerce/gamehub 
+    --> GameHub API - Video games - https://docs.noroff.dev/docs/v2/e-commerce/gamehub 
     Square Eyes API – Movies - https://docs.noroff.dev/docs/v2/e-commerce/square-eyes 
 )
 - Create a working website (MVC was allowed according to a teacher)

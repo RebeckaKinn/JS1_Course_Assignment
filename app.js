@@ -4,8 +4,12 @@ import { changePage, renderPage } from "./controller.js";
 
 
 window.changePage = changePage;
-updateView();
+startUp()
 
+function startUp(){
+    //model.app.currentPage = "home";
+    updateView();
+}
 export async function updateView(){
     const content = await renderPage(); 
 

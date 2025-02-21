@@ -26,15 +26,36 @@ export function chosenProduct(id){
 }
 
 export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt){
-    const newProduct = {
-        id: newID,
-        title: newTitle,
-        price: newPrice,
-        discountedPrice: newDiscountPrice,
-        onSale: newOnSale,
-        image: newImage,
-        alt: newImageAlt,
-    };
-    model.input.cart.push(newProduct);
-    console.log("cart:", model.input.cart)
+    const existingProduct = model.input.cart.find((item) => item.id === newID);
+    if (existingProduct) {
+        existingProduct.amount += 1;
+    } else {
+        const newProduct = {
+            id: newID,
+            title: newTitle,
+            price: newPrice,
+            discountedPrice: newDiscountPrice,
+            onSale: newOnSale,
+            image: newImage,
+            alt: newImageAlt,
+            amount: 1
+        };
+
+        model.input.cart.push(newProduct);
+    }
+    console.log("cart after add:", model.input.cart)
+}
+
+export function removeFromCart(chosenID){
+    model.input.cart = model.input.cart.map((item) => {
+        if (item.id === chosenID) {
+            if (item.amount > 1) {
+                return { ...item, amount: item.amount - 1 }; 
+            } 
+            return null; 
+        }
+        return item;
+    }).filter(Boolean); 
+    console.log("cart after remove:",model.input.cart)
+    updateView();
 }

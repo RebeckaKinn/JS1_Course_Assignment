@@ -32,7 +32,7 @@ async function displayItems(){
 
                 <div class="flex row">
                     <p>Price</p>
-                    <p>${element.price}</p>
+                    ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}
                 </div>
 
             </section>
