@@ -18,24 +18,36 @@ function checkoutDisplay(){
     }
     model.input.cart.forEach((element) => {
         items += /*HTML*/`
-        <div>
-            <h3>${element.title}</h3>
+        <div class="flex row">
             <div class="list-image">
                 <img src="${element.image}" alt="${element.alt}">
             </div>
+            
+            <h3>${element.title}</h3>
 
-            <div class="flex row">
-                <p>Price</p>
-                ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}
+            <div class="flex col">
+                <div>
+                    <p>${element.amount}</p>
+                </div>
+                <div>
+                <b>Price</b>
+                    ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}
+                </div>
+                    <b>Subtotal</b>
+                    <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
+                </div>
+                <div>
+                    <button onclick="removeFromCart('${element.id}')">Remove</button>
+                </div>
             </div>
 
-            <div>
-            ${element.amount}
-                <button onclick="removeFromCart('${element.id}')">Remove</button>
-            </div>
         </div>
         
         `;
     })
     return items;
+}
+
+function calculateSubTotal(amount, onSale, price, discountedPrice){
+    return onSale ? discountedPrice * amount : price * amount;
 }
