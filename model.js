@@ -6,7 +6,7 @@ import { confirmationView } from './pages/checkout/confirmation/confirmationView
 export const model = {
     app:{
         display: document.getElementById('app'),
-        currentPage: "checkout",
+        currentPage: "home",
         pages:[
             {
                 name: "home",

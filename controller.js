@@ -43,9 +43,11 @@ export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale
         model.input.cart.push(newProduct);
     }
     console.log("cart after add:", model.input.cart)
+    updateView();
 }
 
 export function removeFromCart(chosenID){
+    //maybe remove all instead?
     model.input.cart = model.input.cart.map((item) => {
         if (item.id === chosenID) {
             if (item.amount > 1) {
@@ -63,4 +65,44 @@ export function removeFromCart(chosenID){
 export function checkoutHandeling(){
     model.input.cart = [];
     changePage(model.app.pages[3].name);
+}
+
+export function calculateSubTotal(amount, onSale, price, discountedPrice){
+    return (onSale ? discountedPrice * amount : price * amount).toFixed(2);
+}
+
+export function calculateTotal(){
+    let amount = 0;
+    model.input.cart.forEach((element) => {
+        amount += element.onSale ? element.discountedPrice * element.amount : element.price * element.amount;
+    })
+    return amount.toFixed(2);
+}
+
+export function getAmountOfItemsInCart(){
+    let amount = 0;
+    model.input.cart.forEach((element) => {
+        amount += element.amount;
+    })
+    return amount;
+}
+
+
+export function changeAmount(chosenID, add = null){
+    model.input.cart.forEach((element) => {
+        if(element.id === chosenID){
+            if(add){
+                element.amount++;
+                console.log("adding", element.amount)
+            }else if(!add){
+                element.amount--;
+                console.log("subtract", element.amount)
+                if(element.amount <= 0) removeFromCart(element.id);
+            }else{
+                console.error("Wrong input in change amount.")
+            }
+            
+        }
+    })
+    updateView();
 }

@@ -1,9 +1,10 @@
 
 import { model } from "./model.js";
 import { changePage, renderPage } from "./controller.js";
-
+import { navbar } from './components/nav.js'
 
 window.changePage = changePage;
+window.navbar = navbar;
 startUp()
 
 function startUp(){
@@ -22,17 +23,7 @@ export async function updateView(){
 }
 
 
-function navbar(){
-    return /*HTML*/ `
-    <ul>
-        <li onclick="changePage('home')">Home</li>
-        <li onclick="changePage('product')">Product test</li>
-        <li onclick="changePage('checkout')">Checkout test</li>
-        <li onclick="changePage('confirmation')">Confirmation test</li>
-    </ul>
-    
-    `;
-}
+
 
 
 

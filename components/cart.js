@@ -1,34 +1,36 @@
-import { model } from "../../model.js";
-import { removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
-
+import { model } from "../model.js";
+import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../controller.js";
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;
 window.calculateSubTotal = calculateSubTotal;
 window.calculateTotal = calculateTotal;
 window.getAmountOfItemsInCart = getAmountOfItemsInCart;
+window.changePage = changePage;
+window.changeAmount = changeAmount;
 
-export function checkoutView(){
+export function cartView(){
     return /*HTML*/`
-    <h1>Checkout</h1>
     <div>
-        <h2>${getAmountOfItemsInCart()} items in cart</h2>
+        <div>
+            <h2>${getAmountOfItemsInCart()} items in cart</h2>
+        </div>
+        <section>${cartDisplay()}</section>
+        <section>
+            <div>
+                <b>Total</b>
+                <p>${calculateTotal()}</p>
+            </div>
+            <div>
+                <button onclick="changePage(model.app.pages[2].name)">Checkout</button>
+            </div>
+        </section>
     </div>
-    <section>${checkoutDisplay()}</section>
-    <section>
-        <div>
-            <b>Total</b>
-            <p>${calculateTotal()}</p>
-        </div>
-        <div>
-            <button onclick="checkoutHandeling()">Order and Pay</button>
-        </div>
-    </section>
     `;
 }
 
-//ADD THE INPUT AS IN CART
-function checkoutDisplay(){
+
+function cartDisplay(){
     let items = '';
     if(model.input.cart.length <= 0){
         items = /*HTML*/`
@@ -46,12 +48,12 @@ function checkoutDisplay(){
 
             <div class="flex col">
                 <div>
-                    <b>QTY</b>
-                    <p>${element.amount}</p>
-                </div>
-                <div>
-                <b>PRICE</b>
-                    ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}
+                    <span><b>QTY</b></span>
+                    <div>
+                        <button onclick="changeAmount('${element.id}', false)">&minus;</button>
+                        <input type="number" value="${element.amount}" onchange="changeAmount('${element.id}')">
+                        <button onclick="changeAmount('${element.id}', true)">&plus;</button>
+                    </div>
                 </div>
                     <b>SUBTOTAL</b>
                     <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
@@ -67,4 +69,3 @@ function checkoutDisplay(){
     })
     return items;
 }
-
