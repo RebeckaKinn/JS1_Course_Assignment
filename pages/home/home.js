@@ -34,10 +34,13 @@ async function displayItems(){
                     ${element.favorite ? `&#9733;` : `&#9734;`}
                 </div>
 
-                <div class="flex row">
-                    <p>Price</p>
-                    ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}
-                </div>
+                <p class="flex row">
+                    <b>Price:</b>
+                    ${element.onSale ? `
+                        <b class="discount">$${element.price}</b> 
+                        <b class="red">${element.discountedPrice}</b>
+                        `: `$<b>${element.price}</b>`}
+                </p>
 
             </section>
             `;

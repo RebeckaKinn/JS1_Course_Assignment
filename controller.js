@@ -63,6 +63,15 @@ export function removeFromCart(chosenID){
 
 
 export function checkoutHandeling(){
+    const generateOrderID = (model.data.orderHistory.length + 10)*55;
+    model.data.orderHistory.push({
+        orderID: generateOrderID,
+        date: new Date(),
+        orderDetails: model.input.cart
+    })
+    model.input.recentOrder = generateOrderID;
+    console.log("generateOrderID:", generateOrderID)
+    console.log("model.data.orderHistory:", model.data.orderHistory)
     model.input.cart = [];
     changePage(model.app.pages[3].name);
 }
@@ -71,9 +80,9 @@ export function calculateSubTotal(amount, onSale, price, discountedPrice){
     return (onSale ? discountedPrice * amount : price * amount).toFixed(2);
 }
 
-export function calculateTotal(){
+export function calculateTotal(list){
     let amount = 0;
-    model.input.cart.forEach((element) => {
+    list.forEach((element) => {
         amount += element.onSale ? element.discountedPrice * element.amount : element.price * element.amount;
     })
     return amount.toFixed(2);
@@ -105,4 +114,10 @@ export function changeAmount(chosenID, add = null){
         }
     })
     updateView();
+}
+
+
+export function findRecentOrder(){
+    const recentOrder = model.data.orderHistory.find((item) => item.orderID === model.input.recentOrder);
+    return recentOrder;
 }

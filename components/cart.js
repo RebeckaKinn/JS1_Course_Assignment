@@ -17,12 +17,12 @@ export function cartView(){
         </div>
         <section>${cartDisplay()}</section>
         <section>
+            <p>
+                <b>Total:</b>
+                <b>$${calculateTotal(model.input.cart)}</b>
+            </p>
             <div>
-                <b>Total</b>
-                <p>${calculateTotal()}</p>
-            </div>
-            <div>
-                <button onclick="changePage(model.app.pages[2].name)">Checkout</button>
+                <button onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
             </div>
         </section>
     </div>
@@ -55,9 +55,13 @@ function cartDisplay(){
                         ${element.amount <= 4 ? /*HTML*/`<button onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
                     </div>
                 </div>
+
+                <p>
                     <b>SUBTOTAL</b>
-                    <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
+                    <b>$${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</b>
+                </p>
                 </div>
+
                 <div>
                     <button onclick="removeFromCart('${element.id}')">&#10005;</button>
                 </div>

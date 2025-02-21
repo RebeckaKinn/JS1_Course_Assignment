@@ -17,10 +17,10 @@ export function checkoutView(){
     </div>
     <section>${checkoutDisplay()}</section>
     <section>
-        <div>
-            <b>Total</b>
-            <p>${calculateTotal()}</p>
-        </div>
+        <p>
+            <b>Total:</b>
+            <b>$${calculateTotal(model.input.cart)}</b>
+        </p>
         <div>
             <button onclick="checkoutHandeling()">Order and Pay</button>
         </div>
