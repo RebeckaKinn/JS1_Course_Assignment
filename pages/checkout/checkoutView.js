@@ -9,9 +9,14 @@ export function checkoutView(){
         <h2>${getAmountOfItemsInCart()} items in cart</h2>
     </div>
     <section>${checkoutDisplay()}</section>
+    <section>
+        <b>Total</b>
+        <p>${calculateTotal()}</p>
+    </section>
     `;
 }
 
+//add this to cart instead????
 function getAmountOfItemsInCart(){
     let amount = 0;
     model.input.cart.forEach((element) => {
@@ -62,4 +67,12 @@ function checkoutDisplay(){
 
 function calculateSubTotal(amount, onSale, price, discountedPrice){
     return onSale ? discountedPrice * amount : price * amount;
+}
+
+function calculateTotal(){
+    let amount = 0;
+    model.input.cart.forEach((element) => {
+        amount += element.onSale ? element.discountedPrice * element.amount : element.price * element.amount;
+    })
+    return amount;
 }
