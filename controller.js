@@ -25,11 +25,15 @@ export function chosenProduct(id){
     changePage(model.app.pages[1].name);
 }
 
-export function addToCart(newID, newTitle, newPrice){
+export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt){
     const newProduct = {
         id: newID,
         title: newTitle,
         price: newPrice,
+        discountedPrice: newDiscountPrice,
+        onSale: newOnSale,
+        image: newImage,
+        alt: newImageAlt,
     };
     model.input.cart.push(newProduct);
     console.log("cart:", model.input.cart)

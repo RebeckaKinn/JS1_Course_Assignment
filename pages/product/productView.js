@@ -26,17 +26,16 @@ async function displayContent(){
                     </div>
 
                     <div class="flex col">
-                        <p><strong>Price:</strong> $${data.discountedPrice || data.price}</p>
+                        <div>Price: ${data.onSale ? `<p class="discount">${data.price}</p> <p class="red">${data.discountedPrice}</p>`: `<p>${data.price}</p>`}</div>
                         <p><strong>Genre:</strong> ${data.genre}</p>
                         <p><strong>Age Rating:</strong> ${data.ageRating}</p>
                         <p><strong>Release Date:</strong> ${data.released}</p>
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>Tags:</strong> ${data.tags.join(', ')}</p>
-                        <p><strong>On Sale:</strong> ${data.onSale ? 'Yes' : 'No'}</p>
                         <p><strong>Favorite:</strong> ${data.favorite ? 'Yes' : 'No'}</p>
                     </div>
 
-                    <button onclick="addToCart('${data.id}', '${data.title}', ${data.discountedPrice || data.price})">Add to Cart</button>
+                    <button onclick="addToCart('${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
                 </section>
             `;
         } else {
