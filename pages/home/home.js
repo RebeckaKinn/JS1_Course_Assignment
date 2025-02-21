@@ -30,6 +30,10 @@ async function displayItems(){
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
 
+                <div>
+                    ${element.favorite ? `&#9733;` : `&#9734;`}
+                </div>
+
                 <div class="flex row">
                     <p>Price</p>
                     ${element.onSale ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>`: `<p>${element.price}</p>`}

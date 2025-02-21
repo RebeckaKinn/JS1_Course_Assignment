@@ -48,18 +48,18 @@ function cartDisplay(){
 
             <div class="flex col">
                 <div>
-                    <span><b>QTY</b></span>
+                    <b>QTY</b>
                     <div>
                         <button onclick="changeAmount('${element.id}', false)">&minus;</button>
-                        <input type="number" value="${element.amount}" onchange="changeAmount('${element.id}')">
-                        <button onclick="changeAmount('${element.id}', true)">&plus;</button>
+                        <b>${element.amount}</b>
+                        ${element.amount <= 4 ? /*HTML*/`<button onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
                     </div>
                 </div>
                     <b>SUBTOTAL</b>
                     <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
                 </div>
                 <div>
-                    <button onclick="removeFromCart('${element.id}')">Remove</button>
+                    <button onclick="removeFromCart('${element.id}')">&#10005;</button>
                 </div>
             </div>
 

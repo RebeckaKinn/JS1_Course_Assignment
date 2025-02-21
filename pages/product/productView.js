@@ -33,7 +33,9 @@ async function displayContent(){
                         <p><strong>Release Date:</strong> ${data.released}</p>
                         <p><strong>Description:</strong> ${data.description}</p>
                         <p><strong>Tags:</strong> ${data.tags.join(', ')}</p>
-                        <p><strong>Favorite:</strong> ${data.favorite ? 'Yes' : 'No'}</p>
+                        <div>
+                            ${data.favorite ? `&#9733;` : `&#9734;`}
+                        </div>
                     </div>
 
                     <button onclick="addToCart('${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>

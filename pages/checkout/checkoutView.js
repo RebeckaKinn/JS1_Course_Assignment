@@ -1,5 +1,5 @@
 import { model } from "../../model.js";
-import { removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
+import { changeAmount ,removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 
 
 window.removeFromCart = removeFromCart;
@@ -7,6 +7,7 @@ window.checkoutHandeling = checkoutHandeling;
 window.calculateSubTotal = calculateSubTotal;
 window.calculateTotal = calculateTotal;
 window.getAmountOfItemsInCart = getAmountOfItemsInCart;
+window.changeAmount = changeAmount;
 
 export function checkoutView(){
     return /*HTML*/`
@@ -47,7 +48,11 @@ function checkoutDisplay(){
             <div class="flex col">
                 <div>
                     <b>QTY</b>
-                    <p>${element.amount}</p>
+                    <div>
+                        <button onclick="changeAmount('${element.id}', false)">&minus;</button>
+                        <b>${element.amount}</b>
+                        ${element.amount <= 4 ? /*HTML*/`<button onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
+                    </div>
                 </div>
                 <div>
                 <b>PRICE</b>
@@ -57,7 +62,7 @@ function checkoutDisplay(){
                     <p>${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</p>
                 </div>
                 <div>
-                    <button onclick="removeFromCart('${element.id}')">Remove</button>
+                    <button onclick="removeFromCart('${element.id}')">&#10005;</button>
                 </div>
             </div>
 
