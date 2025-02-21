@@ -28,4 +28,19 @@ export async function fetchMainData(){
 
 }
 
+export async function fetchProduct(chosenID){
+  try{
+    const response = await fetch(`${NOROFF_API_URL}/${chosenID}`, options);
+    if (!response.ok) {
+        throw new Error(`Response status: ${response.status}`);
+      }
+
+    const result = await response.json();
+    
+    return result.data || {};
+} catch (error){
+    console.error(error.message);
+}
+}
+
 

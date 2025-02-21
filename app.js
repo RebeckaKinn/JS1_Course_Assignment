@@ -1,15 +1,11 @@
 
 import { model } from "./model.js";
 import { changePage, renderPage } from "./controller.js";
-import { fetchMainData } from "./api.js";
 
 
 window.changePage = changePage;
-startUp()
+updateView();
 
-async function startUp(){
-    updateView();
-}
 export async function updateView(){
     const content = await renderPage(); 
 
