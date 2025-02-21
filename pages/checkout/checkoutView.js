@@ -1,7 +1,9 @@
 import { model } from "../../model.js";
 import { removeFromCart } from "../../controller.js";
+import { checkoutHandeling } from "../../controller.js";
 
 window.removeFromCart = removeFromCart;
+window.checkoutHandeling = checkoutHandeling;
 export function checkoutView(){
     return /*HTML*/`
     <h1>Checkout</h1>
@@ -10,8 +12,13 @@ export function checkoutView(){
     </div>
     <section>${checkoutDisplay()}</section>
     <section>
-        <b>Total</b>
-        <p>${calculateTotal()}</p>
+        <div>
+            <b>Total</b>
+            <p>${calculateTotal()}</p>
+        </div>
+        <div>
+            <button onclick="checkoutHandeling()">Checkout</button>
+        </div>
     </section>
     `;
 }

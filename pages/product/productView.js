@@ -2,6 +2,7 @@ import { model } from "../../model.js";
 import { fetchProduct } from "../../api.js";
 import { addToCart } from "../../controller.js";
 
+
 window.addToCart = addToCart;
 export async function productView(){
     const content = await displayContent();

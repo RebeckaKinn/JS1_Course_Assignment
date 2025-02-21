@@ -21,7 +21,6 @@ export async function renderPage() {
 
 export function chosenProduct(id){
     model.input.currentId = id;
-    console.log(model.input.currentId)
     changePage(model.app.pages[1].name);
 }
 
@@ -58,4 +57,10 @@ export function removeFromCart(chosenID){
     }).filter(Boolean); 
     console.log("cart after remove:",model.input.cart)
     updateView();
+}
+
+
+export function checkoutHandeling(){
+    model.input.cart = [];
+    changePage(model.app.pages[3].name);
 }
