@@ -11,10 +11,14 @@ async function startUp(){
     await fetchMainData();
     updateView();
 }
-export function updateView(){
+export async function updateView(){
+    console.log("Updating view...");
+    const content = await renderPage(); 
+    console.log("Rendered content:", content);
+    
     model.app.display.innerHTML = /*HTML*/ `
     <header>${navbar()}</header>
-    <main>${renderPage()}</main>
+    <main>${content}</main>
     <footer></footer>
     `;
     

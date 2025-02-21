@@ -10,19 +10,19 @@ export const model = {
         pages:[
             {
                 name: "home",
-                path: homeView()
+                path: homeView
             },
             {
                 name: "product",
-                path: productView()
+                path: productView
             },
             {
                 name: "checkout",
-                path: checkoutView()
+                path: checkoutView
             },
             {
                 name: "confirmation",
-                path: confirmationView()
+                path: confirmationView
             },
         ]
     },
@@ -32,6 +32,6 @@ export const model = {
     },
 
     data:{
-        items: []
+
     }
 };

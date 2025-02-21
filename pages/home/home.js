@@ -1,12 +1,13 @@
 import { model } from "../../model.js";
-//error when calling on model
-// import { fetchMainData } from "/api.js";
+import { fetchMainData } from "../../api.js";
 
-// fetchMainData()
 
-export function homeView(){
-    return `<h1>Welcome to Home Page</h1>
-    <div>${displayItems()}</div>
+export async function homeView(){
+    const items = await displayItems();
+
+    return `
+    <h1>Welcome to Home Page</h1>
+    <div>${items}</div>
     
     `;
 }
@@ -14,14 +15,17 @@ export function homeView(){
 
 async function displayItems(){
     try{
-        const { model } = await import("../../model.js");//not working correctly
+        const data = await fetchMainData();
+        const list = data || [];
+        console.log("list: " + list)
         let items = '';
-        model.data.items.forEach(element => {
-            items += `${element.title}`;
+        list.forEach(element => {
+            items += `<p>Title: ${element.title}</p>`;
             console.log("title: " + element.title)
         });
         return items;
     } catch (error){
         console.error(error.message);
+        return `<p>Error loading items</p>`;
     }
 }

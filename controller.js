@@ -9,9 +9,13 @@ export function changePage(option){
 }
 
 
-export function renderPage() {
+export async function renderPage() {
     const page = model.app.pages.find(p => p.name === model.app.currentPage);
-    if (page) {
-        return page.path; 
+    if (page && typeof page.path === "function") {
+        console.log("Executing function for page:", page.name);
+        return await page.path(); 
     }
+
+    console.error("Page not found or path is not a function:", page);
+    return "<p>Page not found</p>";
 }

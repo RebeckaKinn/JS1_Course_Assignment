@@ -18,10 +18,10 @@ export async function fetchMainData(){
             throw new Error(`Response status: ${response.status}`);
           }
 
-        const data = await response.json();
-        console.log(data);
-        model.data.items = Array.isArray(data) ? data : [data]; 
-        console.log("New data in Model:", model.data.items);
+        const result = await response.json();
+        console.log("Fetched result:", result);
+        console.log("Returned result:", result.data);
+        return Array.isArray(result.data) ? result.data : [];
     } catch (error){
         console.error(error.message);
     }
