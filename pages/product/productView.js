@@ -1,6 +1,8 @@
 import { model } from "../../model.js";
 import { fetchProduct } from "../../api.js";
+import { addToCart } from "../../controller.js";
 
+window.addToCart = addToCart;
 export async function productView(){
     const content = await displayContent();
     return /*HTML*/`
@@ -16,10 +18,14 @@ async function displayContent(){
         const data = await fetchProduct(model.input.currentId);
         if (data) {
             return /*HTML*/`
-                <section class="product-details">
+                <section class="flex col">
                     <h2>${data.title}</h2>
-                    <img src="${data.image.url}" alt="${data.image.alt}" class="product-image">
-                    <div class="product-info">
+
+                    <div>
+                        <img src="${data.image.url}" alt="${data.image.alt}">
+                    </div>
+
+                    <div class="flex col">
                         <p><strong>Price:</strong> $${data.discountedPrice || data.price}</p>
                         <p><strong>Genre:</strong> ${data.genre}</p>
                         <p><strong>Age Rating:</strong> ${data.ageRating}</p>
@@ -29,6 +35,8 @@ async function displayContent(){
                         <p><strong>On Sale:</strong> ${data.onSale ? 'Yes' : 'No'}</p>
                         <p><strong>Favorite:</strong> ${data.favorite ? 'Yes' : 'No'}</p>
                     </div>
+
+                    <button onclick="addToCart('${data.id}', '${data.title}', ${data.discountedPrice || data.price})">Add to Cart</button>
                 </section>
             `;
         } else {

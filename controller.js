@@ -24,3 +24,13 @@ export function chosenProduct(id){
     console.log(model.input.currentId)
     changePage(model.app.pages[1].name);
 }
+
+export function addToCart(newID, newTitle, newPrice){
+    const newProduct = {
+        id: newID,
+        title: newTitle,
+        price: newPrice,
+    };
+    model.input.cart.push(newProduct);
+    console.log("cart:", model.input.cart)
+}

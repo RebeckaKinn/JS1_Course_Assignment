@@ -29,6 +29,7 @@ export const model = {
 
     input:{
         currentId: '',
+        cart: [],
     },
 
     data:{
