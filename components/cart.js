@@ -36,6 +36,7 @@ export function cartView() {
     </div>`;
 }
 
+//Make it to stay up while it is being edited inside the cart
 
 function displayCartIcon(){
     return /*HTML*/`
