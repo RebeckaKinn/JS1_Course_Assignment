@@ -12,7 +12,7 @@ Slik at det står i stil med bildene?
 
     --color-black:#1E1E1E;
     --color-white: #F5F5F5;
-    --color-shadow: #1e1e1e35;
+    --color-shadow: rgba(0,0,0,0.75);
 
     --color-highlighted: red;
     --color-gray-transparent: rgba(128, 128, 128, 0.811);

@@ -17,7 +17,7 @@ export async function updateView(){
     model.app.display.innerHTML = /*HTML*/ `
     <header>${navbar()}</header>
     <main>${content}</main>
-    <footer></footer>
+
     `;
     
 }
