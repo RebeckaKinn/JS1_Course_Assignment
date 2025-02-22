@@ -36,7 +36,7 @@ export function cartView() {
     </div>`;
 }
 
-//Make it to stay up while it is being edited inside the cart
+//Make it to stay up while it is being edited inside the cart. Add queryselector?
 
 function displayCartIcon(){
     return /*HTML*/`
