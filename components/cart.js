@@ -1,5 +1,7 @@
 import { model } from "../model.js";
 import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../controller.js";
+import { updateView } from "../app.js";
+import { cartIconToggle } from "./cartController.js";
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;
@@ -8,13 +10,16 @@ window.calculateTotal = calculateTotal;
 window.getAmountOfItemsInCart = getAmountOfItemsInCart;
 window.changePage = changePage;
 window.changeAmount = changeAmount;
+window.cartIconToggle = cartIconToggle;
 
-//use a cart logo with updateble number, toggle
+//use a cart logo with updateble number,
 
 export function cartView(){
-    console.log("cart length:", model.input.cart.length)
+
     return /*HTML*/`
-    <div>
+    ${displayCartIcon()}
+    ${model.app.cartControls ? /*HTML*/`
+        <div>
         <div>
             <h2>${getAmountOfItemsInCart()} items in cart</h2>
         </div>
@@ -30,6 +35,16 @@ export function cartView(){
                     `}
             </div>
         </section>
+    </div>
+        ` : ""}
+   
+    `;
+}
+
+function displayCartIcon(){
+    return /*HTML*/`
+    <div onclick="cartIconToggle()">
+        <span>&#128722;</span>
     </div>
     `;
 }

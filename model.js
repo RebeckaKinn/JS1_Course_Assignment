@@ -24,7 +24,8 @@ export const model = {
                 name: "confirmation",
                 path: confirmationView
             },
-        ]
+        ],
+        cartControls: false,
     },
 
     input:{
