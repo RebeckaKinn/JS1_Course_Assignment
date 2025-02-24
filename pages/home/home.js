@@ -1,14 +1,16 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
-import { chosenProduct, addToCart } from "../../controller.js";
+import { chosenProduct, addToCart, handleAddToCart } from "../../controller.js";
 
 window.addToCart = addToCart;
 window.chosenProduct = chosenProduct;
+window.handleAddToCart = handleAddToCart;
 export async function homeView(){
     const items = await displayItems();
 
     return /*HTML*/`
-    <h1>Welcome to PlayBox – Your Ultimate Gaming Destination!</h1>
+    <h1>Welcome to PlayBox </h1>
+    <h2>– Your Ultimate Gaming Destination!</h2>
     <p>Discover the latest and greatest games right here at PlayBox! Whether you're into action-packed adventures, thrilling RPGs, or competitive multiplayer battles, we have something for every gamer. Explore top-rated titles, exclusive deals, and must-play classics—all in one place.</p>
     <ul>
         <li>
@@ -54,7 +56,7 @@ async function displayItems(){
                     </div>
                         
                     <div class="flex row">
-                        <button class="square" onclick="addToCart('${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
+                        <button class="square" onclick="handleAddToCart(this, '${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
                         <div class="fav-button">
                             ${element.favorite ? `&#9733;` : `&#9734;`}
                         </div>
@@ -77,5 +79,9 @@ async function displayItems(){
         return `<p>Error loading items</p>`;
     }
 }
+
+    
+
+
 
 

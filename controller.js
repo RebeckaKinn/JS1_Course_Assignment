@@ -25,7 +25,21 @@ export function chosenProduct(id){
     model.input.currentId = id;
     changePage(model.app.pages[1].name);
 }
-
+export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt) {
+    
+    // Change button text and apply glow effect
+    button.textContent = "Item Added!";
+    button.classList.add("glow");
+    
+    // Revert back after 1.5 seconds
+    setTimeout(() => {
+        button.textContent = "Add to Cart";
+        button.classList.remove("glow");
+    }, 1500);
+    setTimeout(() => {
+        addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt);
+    }, 2000);
+}
 export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt){
     const existingProduct = model.input.cart.find((item) => item.id === newID);
     if (existingProduct) {

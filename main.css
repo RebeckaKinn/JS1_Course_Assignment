@@ -43,6 +43,12 @@ button.square{
     padding: 3%;
 }
 
+.square.glow {
+    background-color: yellow;
+    color: black;
+    transition: background-color 0.3s ease-in-out;
+}
+
 
 .flex{
     display: flex;
