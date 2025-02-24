@@ -19,14 +19,26 @@ export async function fetchMainData(){
           }
 
         const result = await response.json();
-        console.log("Fetched result:", result);
-        console.log("Returned result:", result.data);
+        console.log("result.data:", result.data)
+        createFilters(result.data);
         return Array.isArray(result.data) ? result.data : [];
     } catch (error){
         console.error(error.message);
     }
 
 }
+
+function createFilters(newData) {
+  const genreSet = new Set(model.data.filter.genre);
+
+  newData.forEach(element => {
+      genreSet.add(element.genre);  
+  });
+
+  model.data.filter.genre = Array.from(genreSet);
+  console.log("model.data.filter.genre:", model.data.filter.genre);
+}
+
 
 export async function fetchProduct(chosenID){
   try{

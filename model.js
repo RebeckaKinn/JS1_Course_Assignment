@@ -31,6 +31,7 @@ export const model = {
     input:{
         currentId: '',
         recentOrder: 0,
+        currentFilter: "",
         cart: [
             {
                 alt: "",
@@ -56,6 +57,9 @@ export const model = {
     },
 
     data:{
-        orderHistory: []
+        orderHistory: [],
+        filter: {
+            genre: [],
+        }
     }
 };

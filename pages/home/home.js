@@ -24,6 +24,7 @@ export async function homeView(){
         </li>
     </ul>
     <p>Find your next favorite game below and start playing today! 🚀👇</p>
+    <div>${filterButton()}</div>
     <div>${items}</div>
     
     `;
@@ -81,6 +82,22 @@ async function displayItems(){
 }
 
     
+function filterButton() {
+    return /*HTML*/`
+    <fieldset>
+        <legend>Filter</legend>
+        <ul>
+            ${model.data.filter.genre.map(genre => /*HTML*/`
+                <li>
+                    <input type="radio" name="filter_options" value="${genre}" id="${genre}">
+                    <label for="${genre}">${genre}</label>
+                </li>
+            `).join("")}
+        </ul>
+    </fieldset>
+    `;
+}
+
 
 
 
