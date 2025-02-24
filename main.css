@@ -56,6 +56,16 @@ button.square{
     text-align: center;
 }
 
+.full-height{
+    height: 100%;
+}
+.full-width{
+    width: 100%;
+}
+.width-30{
+    width: 30% !important;
+}
+
 
 .list-image{
     height: 20%;
@@ -66,6 +76,25 @@ button.square{
         width: 100%;
         object-fit: cover;
     }
+}
+
+.flex-space-between{
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+.flex-space-between-col{
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.bottom{
+    margin-top: auto !important;
 }
 
 

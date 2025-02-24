@@ -19,12 +19,13 @@ export function cartView() {
     <div class="cart-container">
         ${displayCartIcon()}
         <div class="cart-info">  
-            <div>
-                <h2>${getAmountOfItemsInCart()} items in cart</h2>
+            <div class="flex-space-between">
+                <h2>Shopping Cart</h2>
+                <h2>${getAmountOfItemsInCart()} items</h2>
             </div>
-            <section>${cartDisplay()}</section>
-            <section>
-                <p>
+            <section class="full-width">${cartDisplay()}</section>
+            <section class="full-height flex-space-between-col">
+                <p class="width-30 flex-space-between">
                     <b>Total:</b>
                     <b>$${calculateTotal(model.input.cart)}</b>
                 </p>
@@ -54,49 +55,35 @@ function cartDisplay() {
 
     return /*HTML*/`
     <div class="cart-items"> 
-        <div class="grid-name-title1">
+        <div class="cart-grid cart-header">
             <b>PRODUCT DETAILS</b>
-        </div>
-         <div class="grid-name-title2 text-align-center">
             <b>QTY</b>
-        </div>
-         <div class="grid-name-title3 text-align-center">
             <b>PRICE</b>
-        </div>
-         <div class="grid-name-title4 text-align-center">
             <b>TOTAL</b>
         </div>
 
         ${model.input.cart.map(element => /*HTML*/`
-        <div class="grid-name-content">
-            <div class="grid-name-image">
+        <div class="cart-grid cart-item">
+            <div class="cart-product">
                 <img src="${element.image}" alt="${element.alt}">
-            </div>
-            
-            <div class="grid-name-content1">
-                <h3 class="remove-margin">${element.title}</h3>
-                <button onclick="removeFromCart('${element.id}')">Remove</button>
+                <div>
+                    <h3 class="remove-margin">${element.title}</h3>
+                    <button class="remove-button" onclick="removeFromCart('${element.id}')">Remove</button>
+                </div>
             </div>
 
-            <div class="grid-name-quantity text-align-center">
+            <div class="cart-quantity">
                 <button class="circle" onclick="changeAmount('${element.id}', false)">&minus;</button>
                 <b>${element.amount}</b>
                 ${element.amount <= 4 ? `<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
             </div>
 
-            <p class="grid-name-price remove-margin text-align-center">
-                <b>$${element.onSale ? element.discountedPrice : element.price}</b>
-            </p>
+            <p class="cart-price"><b>$${element.onSale ? element.discountedPrice : element.price}</b></p>
 
-            <p class="grid-name-total remove-margin text-align-center">
-                <b>$${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</b>
-            </p>
-                
-        </div>
-
-
-
+            <p class="cart-total"><b>$${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</b></p>
         </div>
         `).join('')}
-    </div>`;
+    </div>`; 
 }
+
+
