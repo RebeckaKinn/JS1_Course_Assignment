@@ -137,3 +137,13 @@ export function findRecentOrder(){
     const recentOrder = model.data.orderHistory.find((item) => item.orderID === model.input.recentOrder);
     return recentOrder;
 }
+
+
+export function filterController(genreString){
+    model.input.currentFilter = genreString;
+    updateView();
+}
+export function resetFilter(){
+    model.input.currentFilter = "";
+    updateView();
+}

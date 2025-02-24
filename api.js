@@ -11,21 +11,42 @@ const options = {
     }
   };
 
-export async function fetchMainData(){
-    try{
-        const response = await fetch(`${NOROFF_API_URL}`, options);
-        if (!response.ok) {
-            throw new Error(`Response status: ${response.status}`);
-          }
+// export async function fetchMainData(){
+//     try{
+//         const response = await fetch(`${NOROFF_API_URL}`, options);
+//         if (!response.ok) {
+//             throw new Error(`Response status: ${response.status}`);
+//           }
 
-        const result = await response.json();
-        console.log("result.data:", result.data)
-        createFilters(result.data);
-        return Array.isArray(result.data) ? result.data : [];
-    } catch (error){
-        console.error(error.message);
-    }
+//         const result = await response.json();
+//         console.log("result.data:", result.data)
+//         createFilters(result.data);
+//         return Array.isArray(result.data) ? result.data : [];
+//     } catch (error){
+//         console.error(error.message);
+//     }
 
+// }
+
+export async function fetchMainData() {
+  try {
+      const response = await fetch(`${NOROFF_API_URL}`, options);
+      if (!response.ok) {
+          throw new Error(`Response status: ${response.status}`);
+      }
+
+      const result = await response.json();
+      const allData = Array.isArray(result.data) ? result.data : [];
+
+      createFilters(result.data);
+      return model.input.currentFilter 
+          ? allData.filter(item => item.genre === model.input.currentFilter) 
+          : allData;
+
+  } catch (error) {
+      console.error(error.message);
+      return []; 
+  }
 }
 
 function createFilters(newData) {

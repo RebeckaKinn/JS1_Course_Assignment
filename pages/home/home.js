@@ -1,10 +1,12 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
-import { chosenProduct, handleAddToCart } from "../../controller.js";
+import { chosenProduct, handleAddToCart, filterController, resetFilter } from "../../controller.js";
 
 
 window.chosenProduct = chosenProduct;
 window.handleAddToCart = handleAddToCart;
+window.filterController = filterController;
+window.resetFilter = resetFilter;
 export async function homeView(){
     const items = await displayItems();
 
@@ -89,11 +91,12 @@ function filterButton() {
         <ul>
             ${model.data.filter.genre.map(genre => /*HTML*/`
                 <li>
-                    <input type="radio" name="filter_options" value="${genre}" id="${genre}">
+                    <input type="radio" name="filter_options" value="${genre}" id="${genre}" onclick="filterController(this.value)" ${model.input.currentFilter === genre ? "checked" : ""}>
                     <label for="${genre}">${genre}</label>
                 </li>
             `).join("")}
         </ul>
+        <button onclick="resetFilter()">Reset</button>
     </fieldset>
     `;
 }
