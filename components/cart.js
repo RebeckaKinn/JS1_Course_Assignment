@@ -54,33 +54,48 @@ function cartDisplay() {
 
     return /*HTML*/`
     <div class="cart-items"> 
+        <div class="grid-name-title1">
+            <b>PRODUCT DETAILS</b>
+        </div>
+         <div class="grid-name-title2 text-align-center">
+            <b>QTY</b>
+        </div>
+         <div class="grid-name-title3 text-align-center">
+            <b>PRICE</b>
+        </div>
+         <div class="grid-name-title4 text-align-center">
+            <b>TOTAL</b>
+        </div>
+
         ${model.input.cart.map(element => /*HTML*/`
-        <div class="cart-item flex row">
-            <div class="list-image">
+        <div class="grid-name-content">
+            <div class="grid-name-image">
                 <img src="${element.image}" alt="${element.alt}">
             </div>
             
-            <h3>${element.title}</h3>
-
-            <div class="flex col">
-                <div>
-                    <b>QTY</b>
-                    <div>
-                        <button class="circle" onclick="changeAmount('${element.id}', false)">&minus;</button>
-                        <b>${element.amount}</b>
-                        ${element.amount <= 4 ? `<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
-                    </div>
-                </div>
-
-                <p>
-                    <b>SUBTOTAL</b>
-                    <b>$${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</b>
-                </p>
+            <div class="grid-name-content1">
+                <h3 class="remove-margin">${element.title}</h3>
+                <button onclick="removeFromCart('${element.id}')">Remove</button>
             </div>
 
-            <div>
-                <button class="square" onclick="removeFromCart('${element.id}')">&#10005;</button>
+            <div class="grid-name-quantity text-align-center">
+                <button class="circle" onclick="changeAmount('${element.id}', false)">&minus;</button>
+                <b>${element.amount}</b>
+                ${element.amount <= 4 ? `<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
             </div>
+
+            <p class="grid-name-price remove-margin text-align-center">
+                <b>$${element.onSale ? element.discountedPrice : element.price}</b>
+            </p>
+
+            <p class="grid-name-total remove-margin text-align-center">
+                <b>$${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</b>
+            </p>
+                
+        </div>
+
+
+
         </div>
         `).join('')}
     </div>`;
