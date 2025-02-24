@@ -1,8 +1,8 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
-import { chosenProduct, addToCart, handleAddToCart } from "../../controller.js";
+import { chosenProduct, handleAddToCart } from "../../controller.js";
 
-window.addToCart = addToCart;
+
 window.chosenProduct = chosenProduct;
 window.handleAddToCart = handleAddToCart;
 export async function homeView(){
@@ -44,7 +44,7 @@ async function displayItems(){
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
 
-                <div class="">
+                <div>
                     <h3 class="remove-margin product-title">${element.title}</h3>
                     
                     <div class="flex row align-items-baseline gap-5 remove-margin">

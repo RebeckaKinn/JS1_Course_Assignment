@@ -16,7 +16,9 @@
     color: var(--color-fav);
     padding: 2px;
     font-size: 30px;
-    margin-left: 5%;
+    margin: 0 5%;
+    margin-bottom: 1px;
+    text-align: center;
 }
 
 .product-title{

@@ -5,3 +5,7 @@
 .main-color{
     color: var(--color-main);
 }
+
+.white{
+    color: var(--color-white);
+}
