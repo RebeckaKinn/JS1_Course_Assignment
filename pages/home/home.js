@@ -42,20 +42,23 @@ async function displayItems(){
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
 
-                <div>
-                    <h3 class="remove-margin">${element.title}</h3>
-                    <div class="fav-button">
-                        ${element.favorite ? `&#9733;` : `&#9734;`}
-                    </div>
-                    <p class="flex row remove-margin">
-                        <b>Price:</b>
+                <div class="">
+                    <h3 class="remove-margin product-title">${element.title}</h3>
+                    
+                    <div class="flex row align-items-baseline gap-5 remove-margin">
+                        <p>Price:</p>
                         ${element.onSale ? `
-                            <div class="discount">$${element.price}</div> 
-                            <div class="red">${element.discountedPrice}</div>
-                            `: `$<div>${element.price}</div>`}
-                    </p>
-
-                    <button class="square" onclick="addToCart('${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
+                            <p class="discount">$${element.price}</p> 
+                            <p class="red price">$${element.discountedPrice}</p>
+                            `: `<p class="price">$${element.price}</p>`}
+                    </div>
+                        
+                    <div class="flex row">
+                        <button class="square" onclick="addToCart('${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
+                        <div class="fav-button">
+                            ${element.favorite ? `&#9733;` : `&#9734;`}
+                        </div>
+                    </div>
                 </div>
 
 

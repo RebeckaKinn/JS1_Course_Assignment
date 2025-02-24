@@ -6,4 +6,10 @@
 .discount{
     color: var(--color-gray-transparent);
     text-decoration:line-through;
+    font-weight: 100;
 }
+.price{
+    font-size: 20px;
+    font-weight: 300;
+}
+

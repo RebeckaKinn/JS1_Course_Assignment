@@ -16,5 +16,10 @@
     color: var(--color-fav);
     padding: 2px;
     font-size: 30px;
+    margin-left: 5%;
 }
 
+.product-title{
+    font-size: 30px;
+    letter-spacing: 1px;
+}

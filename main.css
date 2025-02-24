@@ -104,9 +104,23 @@ button.square{
     justify-content: space-between;
     align-items: center;
 }
+.align-items-baseline{
+    align-items: baseline;
+}
+.gap-5{
+    gap: 5%;
+}
+
+.align-items-start{
+    align-items: flex-start;
+}
 
 .bottom{
     margin-top: auto !important;
+}
+
+.padding-top-bottom-5{
+    padding: 5% 0;
 }
 
 
