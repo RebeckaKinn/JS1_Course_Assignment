@@ -1,7 +1,8 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
-import { chosenProduct } from "../../controller.js";
+import { chosenProduct, addToCart } from "../../controller.js";
 
+window.addToCart = addToCart;
 window.chosenProduct = chosenProduct;
 export async function homeView(){
     const items = await displayItems();
@@ -42,17 +43,19 @@ async function displayItems(){
                 </div>
 
                 <div>
-                    <h3>${element.title}</h3>
-                    <div>
+                    <h3 class="remove-margin">${element.title}</h3>
+                    <div class="fav-button">
                         ${element.favorite ? `&#9733;` : `&#9734;`}
                     </div>
-                    <p class="flex row">
+                    <p class="flex row remove-margin">
                         <b>Price:</b>
                         ${element.onSale ? `
-                            <b class="discount">$${element.price}</b> 
-                            <b class="red">${element.discountedPrice}</b>
-                            `: `$<b>${element.price}</b>`}
+                            <div class="discount">$${element.price}</div> 
+                            <div class="red">${element.discountedPrice}</div>
+                            `: `$<div>${element.price}</div>`}
                     </p>
+
+                    <button class="square" onclick="addToCart('${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
                 </div>
 
 

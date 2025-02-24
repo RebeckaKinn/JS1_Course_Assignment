@@ -1,6 +1,6 @@
 .product-item{
     display: grid;
-    grid-template-columns: 40% 60%;
+    grid-template-columns: repeat(2,1fr);
     grid-template-rows: auto;
     margin-bottom: 5%;
     gap: 5%;
@@ -11,3 +11,10 @@
     height: 100%;
     width: 100%;
 }
+
+.fav-button{
+    color: var(--color-fav);
+    padding: 2px;
+    font-size: 30px;
+}
+
