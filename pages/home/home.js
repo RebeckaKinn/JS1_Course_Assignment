@@ -35,25 +35,28 @@ async function displayItems(){
         let items = '';
         list.forEach(element => {
             items += /*HTML*/`
-            <section class="flex col">
-
-                <h3>${element.title}</h3>
+            <section class="product-item">
 
                 <div onclick="chosenProduct('${element.id}')" class="list-image">
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
 
                 <div>
-                    ${element.favorite ? `&#9733;` : `&#9734;`}
+                    <h3>${element.title}</h3>
+                    <div>
+                        ${element.favorite ? `&#9733;` : `&#9734;`}
+                    </div>
+                    <p class="flex row">
+                        <b>Price:</b>
+                        ${element.onSale ? `
+                            <b class="discount">$${element.price}</b> 
+                            <b class="red">${element.discountedPrice}</b>
+                            `: `$<b>${element.price}</b>`}
+                    </p>
                 </div>
 
-                <p class="flex row">
-                    <b>Price:</b>
-                    ${element.onSale ? `
-                        <b class="discount">$${element.price}</b> 
-                        <b class="red">${element.discountedPrice}</b>
-                        `: `$<b>${element.price}</b>`}
-                </p>
+
+
 
             </section>
             `;
