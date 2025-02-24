@@ -36,11 +36,10 @@ export function cartView() {
     </div>`;
 }
 
-//Make it to stay up while it is being edited inside the cart. Add queryselector?
 
 function displayCartIcon(){
     return /*HTML*/`
-    <input type="checkbox" id="cart" class="hidden">
+    <input type="checkbox" id="cart" class="hidden" ${model.app.cartControls && "checked"}>
     <label for="cart" onclick="cartIconToggle()">
         <span class="cart-icon">&#128722;</span>
     </label>
