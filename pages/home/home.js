@@ -7,6 +7,7 @@ window.chosenProduct = chosenProduct;
 window.handleAddToCart = handleAddToCart;
 window.filterController = filterController;
 window.resetFilter = resetFilter;
+
 export async function homeView(){
     const items = await displayItems();
 
