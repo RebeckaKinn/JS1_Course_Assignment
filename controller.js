@@ -1,6 +1,6 @@
 import { model } from "./model.js";
 import { updateView } from "./app.js";
-import { cartView } from "../components/cart.js"
+
 
 export function changePage(option){
     if(model.app.pages.some(p => p.name === option)){
