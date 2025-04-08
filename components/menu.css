@@ -136,12 +136,14 @@
     
     @media screen and (min-width: 800px){
         .cart-info{
-
             width: 50%;
-
             -webkit-box-shadow: 0px 0px 32px 0px var(--color-shadow);
             -moz-box-shadow: 0px 0px 32px 0px var(--color-shadow);
             box-shadow: 0px 0px 32px 0px var(--color-shadow);
-
+        }
+    }
+    @media screen and (min-width: 1600px){
+        .cart-info{
+            width: 30%;
         }
     }
