@@ -27,7 +27,7 @@ export async function homeView(){
         </li>
     </ul>
     <p>Find your next favorite game below and start playing today! 🚀👇</p>
-    <div>${filterButton()}</div>
+    ${filterButton()}
     <div>${items}</div>
     
     `;
@@ -86,10 +86,10 @@ async function displayItems(){
 
     
 function filterButton() {
-    return /*HTML*/`
+ return /*HTML*/`
     <fieldset class="dropdownFilter">
-        <legend class="filterButton">Filter</legend>
-        <ul class="filterOptions">
+        <legend class="filterButton" >Filter by ${model.input.currentFilter == "" ? "category" : model.input.currentFilter}</legend>
+        <ul class="filterOptions" id="filterOptions">
             ${model.data.filter.genre.map(genre => /*HTML*/`
                 <li>
                     <input type="radio" name="filter_options" value="${genre}" id="${genre}" onclick="filterController(this.value)" ${model.input.currentFilter === genre ? "checked" : ""}>
@@ -102,7 +102,23 @@ function filterButton() {
         </ul>
     </fieldset>
     `;
+
 }
+
+// function addEventListenerToFilter(element){
+//     setTimeout(() => {
+//     element.addEventListener('click', () => openFilter());
+// }, 500)
+// }
+
+// function openFilter(){
+//     setTimeout(() => {
+//         const filterOptions = document.querySelector("#filterOptions");
+//         if (filterOptions) {
+//             filterOptions.classList.add("open");
+//         }
+//     }, 100)
+// }
 
 
 

@@ -34,18 +34,25 @@
 }
 
 .filterButton{
+    width: 100%;
     background-color: var(--color-main);
     color: var(--color-dark-gray);
-    padding: 16px;
-    font-size: 16px;
+    
+    font-family: var(--main-font-family) !important;
+    letter-spacing: 1px;
+    font-weight: 500;
+    
+   
     border: none;
+    border-radius: .2rem;
+    padding: 10%;
 }
 
 .filterOptions{
     display: none;
     position: absolute;
     background-color: #f1f1f1;
-    min-width: 160px;
+    width: 100%;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
@@ -61,4 +68,12 @@
 
 .dropdownFilter:hover .filterOptions {display: block;}
 
-.dropdownFilter:hover .filterButton {background-color: #3697cf;}
+.dropdownFilter:hover .filterButton {
+    background-color: #3697cf;
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+} 
+
+.open{
+    display: block;
+}
