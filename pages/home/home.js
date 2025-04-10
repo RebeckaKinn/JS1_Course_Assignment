@@ -87,17 +87,19 @@ async function displayItems(){
     
 function filterButton() {
     return /*HTML*/`
-    <fieldset>
-        <legend>Filter</legend>
-        <ul>
+    <fieldset class="dropdownFilter">
+        <legend class="filterButton">Filter</legend>
+        <ul class="filterOptions">
             ${model.data.filter.genre.map(genre => /*HTML*/`
                 <li>
                     <input type="radio" name="filter_options" value="${genre}" id="${genre}" onclick="filterController(this.value)" ${model.input.currentFilter === genre ? "checked" : ""}>
                     <label for="${genre}">${genre}</label>
                 </li>
             `).join("")}
+            <li>
+                <p onclick="resetFilter()">Reset</p>
+            </li>
         </ul>
-        <button onclick="resetFilter()">Reset</button>
     </fieldset>
     `;
 }
