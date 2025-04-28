@@ -12,22 +12,6 @@ const options = {
     }
   };
 
-// export async function fetchMainData(){
-//     try{
-//         const response = await fetch(`${NOROFF_API_URL}`, options);
-//         if (!response.ok) {
-//             throw new Error(`Response status: ${response.status}`);
-//           }
-
-//         const result = await response.json();
-//         console.log("result.data:", result.data)
-//         createFilters(result.data);
-//         return Array.isArray(result.data) ? result.data : [];
-//     } catch (error){
-//         console.error(error.message);
-//     }
-
-// }
 
 export async function fetchMainData() {
   try {
@@ -58,7 +42,6 @@ function createFilters(newData) {
   });
 
   model.data.filter.genre = Array.from(genreSet);
-  console.log("model.data.filter.genre:", model.data.filter.genre);
 }
 
 

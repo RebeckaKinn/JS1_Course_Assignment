@@ -58,7 +58,6 @@ export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale
 
         model.input.cart.push(newProduct);
     }
-    console.log("cart after add:", model.input.cart)
     updateView();
 }
 
@@ -73,7 +72,6 @@ export function removeFromCart(chosenID){
         }
         return item;
     }).filter(Boolean); 
-    console.log("cart after remove:",model.input.cart)
     updateView();
 }
 
@@ -86,8 +84,6 @@ export function checkoutHandeling(){
         orderDetails: model.input.cart
     })
     model.input.recentOrder = generateOrderID;
-    console.log("generateOrderID:", generateOrderID)
-    console.log("model.data.orderHistory:", model.data.orderHistory)
     model.input.cart = [];
     changePage(model.app.pages[3].name);
 }
@@ -118,10 +114,8 @@ export function changeAmount(chosenID, add = null){
         if(element.id === chosenID){
             if(add){
                 element.amount++;
-                console.log("adding", element.amount)
             }else if(!add){
                 element.amount--;
-                console.log("subtract", element.amount)
                 if(element.amount <= 0) removeFromCart(element.id);
             }else{
                 console.error("Wrong input in change amount.")

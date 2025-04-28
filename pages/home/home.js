@@ -72,10 +72,6 @@ async function displayItems(){
 
             </section>
             `;
-
-
-
-            console.log("title: " + element.title)
         });
         return items;
     } catch (error){

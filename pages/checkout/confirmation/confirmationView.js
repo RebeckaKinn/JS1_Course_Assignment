@@ -20,7 +20,6 @@ export async function confirmationView(){
 
 async function getOrderInformation(){
     const data = await findRecentOrder();
-    console.log("data:", data)
     if(data){
         return /*HTML*/`
             <p>Your order ID is: <strong>${data.orderID}</strong></p>
