@@ -34,6 +34,11 @@ async function getOrderInformation(){
             <p><strong>Total: $${calculateTotal(data.orderDetails)}</strong></p>
     `;
     }else{
-        return `<p>No order history found.</p>`;
+        return /*HTML*/`
+        <div>
+            <b>Order history is empty.</b>
+            <p></p>
+        </div>
+        `;
     }
 }

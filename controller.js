@@ -27,11 +27,9 @@ export function chosenProduct(id){
 }
 export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt) {
     
-    // Change button text and apply glow effect
     button.textContent = "Item Added!";
     button.classList.add("glow");
     
-    // Revert back after 1.5 seconds
     setTimeout(() => {
         button.textContent = "Add to Cart";
         button.classList.remove("glow");

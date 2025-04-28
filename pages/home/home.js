@@ -76,7 +76,11 @@ async function displayItems(){
         return items;
     } catch (error){
         console.error(error.message);
-        return `<p>Error loading items</p>`;
+        return /*HTML*/`
+            <div>
+                <b>Oops...</b>
+                <p>Looks like there was a problem!</p>
+            </div>`;
     }
 }
 
@@ -101,20 +105,6 @@ function filterButton() {
 
 }
 
-// function addEventListenerToFilter(element){
-//     setTimeout(() => {
-//     element.addEventListener('click', () => openFilter());
-// }, 500)
-// }
-
-// function openFilter(){
-//     setTimeout(() => {
-//         const filterOptions = document.querySelector("#filterOptions");
-//         if (filterOptions) {
-//             filterOptions.classList.add("open");
-//         }
-//     }, 100)
-// }
 
 
 

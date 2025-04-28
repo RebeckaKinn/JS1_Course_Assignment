@@ -1,5 +1,4 @@
 import { model } from "./model.js";
-// import {AUTH, KEY} from './env.js'
 
 const NOROFF_API_URL = "https://v2.api.noroff.dev/gamehub"
 
