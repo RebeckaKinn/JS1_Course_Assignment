@@ -77,3 +77,13 @@
 .open{
     display: block;
 }
+
+
+@media screen and (min-width: 900px){
+    .product-item{
+
+    grid-template-columns: 1fr 2fr;
+
+    
+}
+}
