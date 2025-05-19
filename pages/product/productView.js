@@ -12,7 +12,7 @@ window.productNotFound = productNotFound;
 export async function productView(){
     const content = await displayContent();
     return /*HTML*/`
-        <section class="full-height-vh">${content}</section>
+        <section >${content}</section>
     `;
 }
 

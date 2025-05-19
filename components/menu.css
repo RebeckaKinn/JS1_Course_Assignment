@@ -1,14 +1,16 @@
 
-.header{
-    
-    margin: 1% 10%;
-    ul{
-        width: 100%;
-    }
-}
 
 .hidden{
     display: none;
+}
+
+.back-button{
+    justify-self: flex-start;
+    margin: 20px 0;
+
+    button{
+        padding: 20px 0;
+    }
 }
 
 .cart-container{
