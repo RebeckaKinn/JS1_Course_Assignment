@@ -11,7 +11,7 @@ export function navbar(){
     </div>
     `;
 }
-
+//remove this and just have cartView? Add home-button to pages? 
 /*
 <ul class="flex row space-evenly baseline">
             <li onclick="changePage('home')">Home</li>
