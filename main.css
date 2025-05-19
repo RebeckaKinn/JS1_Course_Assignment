@@ -53,6 +53,14 @@ button.square{
     color: black;
     transition: background-color 0.3s ease-in-out;
 }
+button.square2{
+    background-color: var(--color-main);
+    color: var(--color-dark-gray);
+
+}
+.scale-09{
+    scale: 0.9;
+}
 
 
 .flex{
@@ -84,6 +92,9 @@ button.square{
 .remove-margin{
     margin: 0;
 }
+
+
+
 
 .text-align-center{
     text-align: center;
@@ -134,9 +145,17 @@ button.square{
     gap: 5%;
 }
 
+.gap-10{
+    gap: 10%;
+}
+
 .align-items-start{
     align-items: flex-start;
 }
+.justify-content-end{
+    justify-content: flex-end;
+}
+
 
 .bottom{
     margin-top: auto !important;
@@ -144,6 +163,9 @@ button.square{
 
 .padding-top-bottom-5{
     padding: 5% 0;
+}
+.height-100{
+    height: 100%;
 }
 
 .full-height-vh{

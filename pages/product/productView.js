@@ -68,6 +68,7 @@ async function displayContent(){
                         <div class="flex row align-items-center justify-content-center">
                             <button class="square" onclick="handleAddToCart(this,'${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
                         </div>
+                        
                     </div>
 
                 </div>

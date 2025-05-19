@@ -49,8 +49,14 @@ async function displayItems(){
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
 
-                <div>
-                    <h3 class="remove-margin product-title">${element.title}</h3>
+                <div class="flex col space-between">
+                    <div class="flex row">
+                        <h3 class="remove-margin product-title">${element.title}</h3>
+                        <span class="fav-button">
+                            ${element.favorite ? `&#9733;` : `&#9734;`}
+                        </span>
+                    </div>
+                    
                     
                     <div class="flex row align-items-baseline gap-5 remove-margin">
                         <p>Price:</p>
@@ -60,11 +66,10 @@ async function displayItems(){
                             `: `<p class="price">$${element.price}</p>`}
                     </div>
                         
-                    <div class="flex row">
-                        <button class="square" onclick="handleAddToCart(this, '${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
-                        <div class="fav-button">
-                            ${element.favorite ? `&#9733;` : `&#9734;`}
-                        </div>
+
+                    <div class="height-100 flex col gap-10 justify-content-center">
+                        <button class="square square2" onclick="chosenProduct('${element.id}')">View</button>
+                        <button class="square scale-09" onclick="handleAddToCart(this, '${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
                     </div>
                 </div>
 
@@ -81,7 +86,7 @@ async function displayItems(){
     }
 }
 
-    
+    //add addeventlistener eller queryselector for å toggle filter
 function filterButton() {
  return /*HTML*/`
     <fieldset class="dropdownFilter">

@@ -1,7 +1,7 @@
 .product-item {
     display: grid;
     grid-template-columns: 1fr 1fr;
-    align-items: stretch; /* Ensure children stretch fully */
+    align-items: stretch; 
     max-height: 300px;
 
     margin-bottom: 5%;
