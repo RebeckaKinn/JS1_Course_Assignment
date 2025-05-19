@@ -64,7 +64,7 @@ function displayCartIcon(){
 }
 
 
-function cartDisplay() {
+export function cartDisplay() {
     if (model.input.cart.length <= 0) {
         return `<h2>Empty</h2>`;
     }
@@ -94,7 +94,10 @@ function cartDisplay() {
                 ${element.amount <= 4 ? `<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
             </div>
 
-            <p class="cart-price"><b>$${element.onSale ? element.discountedPrice : element.price}</b></p>
+            <div class="cart-price">${element.onSale 
+                            ? `<p class="discount">${element.price}</p> <p class="red">${element.discountedPrice}</p>` 
+                            : `<p>${element.price}</p>`
+                        }</div>
 
             <p class="cart-total"><b>$${calculateSubTotal(element.amount, element.onSale, element.price, element.discountedPrice)}</b></p>
         </div>

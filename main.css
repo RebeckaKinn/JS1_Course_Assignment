@@ -150,6 +150,10 @@ button.square{
     height: 100vh;
 }
 
+.max-width-{
+    max-width: 500px;
+}
+
 
 /*Main layout*/
 #app{
