@@ -1,12 +1,13 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
 import { chosenProduct, handleAddToCart, filterController, resetFilter } from "../../controller.js";
-
+import { errorMessage } from "../../components/error/errorMessage.js";
 
 window.chosenProduct = chosenProduct;
 window.handleAddToCart = handleAddToCart;
 window.filterController = filterController;
 window.resetFilter = resetFilter;
+window.errorMessage = errorMessage;
 
 export async function homeView(){
     const items = await displayItems();
@@ -76,11 +77,7 @@ async function displayItems(){
         return items;
     } catch (error){
         console.error(error.message);
-        return /*HTML*/`
-            <div>
-                <b>Oops...</b>
-                <p>Looks like there was a problem!</p>
-            </div>`;
+        return errorMessage();
     }
 }
 
