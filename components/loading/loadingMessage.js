@@ -1,6 +1,7 @@
-//CURRENTLY TESTING: loading
-export function testView(){
-    return /*HTML*/ `
+
+
+export function loading(){
+     return /*HTML*/ `
         <div class="loadingContainer">
             <div class="spinner">
                 <span>L</span>

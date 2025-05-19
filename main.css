@@ -1,7 +1,7 @@
 @import url(reset.css);
 @import url(variables.css);
 @import url(colors.css);
-@import url(pages/test/loading.css);
+@import url(components/loading/loading.css);
 @import url(pages/home/home.css);
 @import url(components/menu.css);
 @import url(pages/product/product.css);
@@ -13,6 +13,9 @@ body{
     color: var(--color-off-white);
     background-color: var(--color-dark-gray);
 }
+
+
+
 a, button{
     font-family: var(--main-font-family) !important;
     letter-spacing: 1px;

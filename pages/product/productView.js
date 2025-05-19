@@ -1,9 +1,11 @@
 import { model } from "../../model.js";
 import { fetchProduct } from "../../api.js";
 import { handleAddToCart } from "../../controller.js";
+import { errorMessage } from "../../components/error/errorMessage.js";
 
 
 window.handleAddToCart = handleAddToCart;
+window.errorMessage = errorMessage;
 export async function productView(){
     const content = await displayContent();
     return /*HTML*/`
@@ -72,6 +74,6 @@ async function displayContent(){
         }
     } catch (error){
         console.error(error.message);
-        return `<p>Error loading product</p>`;
+        return errorMessage();
     }
 }
