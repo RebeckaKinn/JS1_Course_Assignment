@@ -7,7 +7,7 @@ window.findRecentOrder = findRecentOrder;
 export async function confirmationView(){
     const content = await getOrderInformation();
     return /*HTML*/`
-        <div>
+        <div class="flex col align-items-center justify-content-center full-height-vh">
             <h1 class="main-color">Order Confirmation</h1>
             <p>Thank you for your purchase!</p>
             <div>${content}</div>
@@ -37,7 +37,6 @@ async function getOrderInformation(){
         return /*HTML*/`
         <div>
             <b>Order history is empty.</b>
-            <p></p>
         </div>
         `;
     }

@@ -146,6 +146,10 @@ button.square{
     padding: 5% 0;
 }
 
+.full-height-vh{
+    height: 100vh;
+}
+
 
 /*Main layout*/
 #app{
