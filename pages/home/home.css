@@ -1,4 +1,6 @@
 .product-item{
+    max-height: 300px;
+
     display: grid;
     grid-template-columns: repeat(2,1fr);
     grid-template-rows: auto;
@@ -10,6 +12,11 @@
 .product-item .list-image{
     height: 100%;
     width: 100%;
+    img{
+        height: 100%;
+        width: 100%;
+        object-fit: cover;
+    }
 }
 
 .fav-button{
