@@ -94,7 +94,7 @@ async function displayItems(){
 function filterButton() {
  return /*HTML*/`
     <fieldset class="dropdownFilter">
-        <legend class="filterButton" >Filter by ${model.input.currentFilter == "" ? "category" : model.input.currentFilter}</legend>
+        <legend class="filterButton" >Filter by <b>${model.input.currentFilter == "" ? "category" : model.input.currentFilter}</b></legend>
         <ul class="filterOptions" id="filterOptions">
             ${model.data.filter.genre.map(genre => /*HTML*/`
                 <li>
