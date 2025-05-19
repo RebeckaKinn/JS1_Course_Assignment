@@ -39,6 +39,10 @@
 
 
 /*FILTER DROPDOWN MENU*/
+
+.filter-container{
+    align-self: flex-end;
+}
 .dropdownFilter{
     position: relative;
     display: inline-block;

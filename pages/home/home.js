@@ -13,6 +13,7 @@ export async function homeView(){
     const items = await displayItems();
 
     return /*HTML*/`
+    <section class="flex col">
     <h1>Welcome to PlayBox </h1>
     <h2>– Your Ultimate Gaming Destination!</h2>
     <p>Discover the latest and greatest games right here at PlayBox! Whether you're into action-packed adventures, thrilling RPGs, or competitive multiplayer battles, we have something for every gamer. Explore top-rated titles, exclusive deals, and must-play classics—all in one place.</p>
@@ -28,8 +29,11 @@ export async function homeView(){
         </li>
     </ul>
     <p>Find your next favorite game below and start playing today! 🚀👇</p>
-    ${filterButton()}
+    <section class="filter-container">${filterButton()}</section>
+    
     <div>${items}</div>
+    </section>
+    
     
     `;
 }
@@ -50,7 +54,7 @@ async function displayItems(){
                 </div>
 
                 <div class="flex col space-between">
-                    <div class="flex row">
+                    <div class="flex row baseline">
                         <h3 class="remove-margin product-title">${element.title}</h3>
                         <span class="fav-button">
                             ${element.favorite ? `&#9733;` : `&#9734;`}
