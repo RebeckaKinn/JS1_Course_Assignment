@@ -2,10 +2,13 @@ import { model } from "../../model.js";
 import { fetchProduct } from "../../api.js";
 import { handleAddToCart } from "../../controller.js";
 import { errorMessage } from "../../components/error/errorMessage.js";
+import { productNotFound } from "../../components/error/noProductsFound.js";
 
 
 window.handleAddToCart = handleAddToCart;
 window.errorMessage = errorMessage;
+window.productNotFound = productNotFound;
+
 export async function productView(){
     const content = await displayContent();
     return /*HTML*/`
@@ -70,7 +73,7 @@ async function displayContent(){
                 </div>
             `;
         } else {
-            return `<p>No product data found.</p>`;
+            return productNotFound();
         }
     } catch (error){
         console.error(error.message);
