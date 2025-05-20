@@ -1,6 +1,6 @@
 import { model } from "../../model.js";
 import { changeAmount ,removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
-import { cartDisplay } from "../../components/cart.js";
+import { cartDisplay } from "../../components/nav/cart.js";
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;

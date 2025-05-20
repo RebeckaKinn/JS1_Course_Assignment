@@ -4,24 +4,23 @@ import { changePage, renderPage } from "./controller.js";
 import { backButton } from './components/backButton.js'
 import { loading } from './components/loading/loadingMessage.js'
 import { errorMessage } from './components/error/errorMessage.js'
-import { cartView } from './components/cart.js'
+import { nav } from './components/nav/nav.js'
 
 window.changePage = changePage;
 window.loading = loading;
 window.errorMessage = errorMessage;
 window.backButton = backButton;
-window.cartView = cartView;
+window.nav = nav;
 startUp()
 
 function startUp(){
-    //model.app.currentPage = "home";
     updateView();
 }
 export async function updateView(){
     const loadingHTML = /*HTML*/ `
         <header>
             
-            ${cartView()}
+            ${nav()}
             </header>
         <main>${loading()}</main>
     `;
@@ -32,7 +31,7 @@ export async function updateView(){
         const content = await renderPage();
         const finalHTML = /*HTML*/ `
             <header>
-            ${cartView()}
+            ${nav()}
             </header>
             <main>
             ${model.app.currentPage !== "home" ? backButton() : ''}

@@ -1,4 +1,4 @@
-export { changePage } from '../controller.js'
+import { changePage } from '../controller.js'
 window.changePage = changePage;
 
 export function backButton(){

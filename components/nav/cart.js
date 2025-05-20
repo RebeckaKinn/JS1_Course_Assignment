@@ -1,6 +1,5 @@
-import { model } from "../model.js";
-import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../controller.js";
-import { updateView } from "../app.js";
+import { model } from "../../model.js";
+import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 import { cartIconToggle } from "./cartController.js";
 
 window.removeFromCart = removeFromCart;
