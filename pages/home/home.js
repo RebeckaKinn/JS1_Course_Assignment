@@ -11,7 +11,7 @@ window.errorMessage = errorMessage;
 
 export async function homeView(){
     const items = await displayItems();
-
+    if(items === null) return errorMessage();
     return /*HTML*/`
     <section class="flex col">
     <h1>Welcome to PlayBox </h1>
@@ -43,7 +43,9 @@ async function displayItems(){
     try{
         const data = await fetchMainData();
         const list = data || [];
-
+        if (list.length === 0) {
+            return null; 
+        }
         let items = '';
         list.forEach(element => {
             items += /*HTML*/`
@@ -83,14 +85,14 @@ async function displayItems(){
             </section>
             `;
         });
+        
         return items;
     } catch (error){
         console.error(error.message);
-        return errorMessage();
+        return null;
     }
 }
 
-    //add addeventlistener eller queryselector for å toggle filter
 function filterButton() {
  return /*HTML*/`
     <fieldset class="dropdownFilter">

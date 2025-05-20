@@ -25,7 +25,7 @@ export function cartView() {
                 <h2>Shopping Cart</h2>
                 <h2>${getAmountOfItemsInCart()} items</h2>
             </div>
-            <section class="full-width">${cartDisplay()}</section>
+            <section class="full-width">${cartDisplay() === null ? `Empty` : cartDisplay()}</section>
             <section class="full-height flex-space-between-col">
                 <p class="width-30 flex-space-between">
                     <b>Total:</b>
@@ -65,7 +65,7 @@ function displayCartIcon(){
 
 export function cartDisplay() {
     if (model.input.cart.length <= 0) {
-        return `<h2>Empty</h2>`;
+        return null;
     }
 
     return /*HTML*/`

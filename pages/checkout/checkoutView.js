@@ -1,6 +1,7 @@
 import { model } from "../../model.js";
 import { changeAmount ,removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 import { cartDisplay } from "../../components/nav/cart.js";
+import { errorMessage } from "../../components/error/errorMessage.js";
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;
@@ -9,9 +10,11 @@ window.calculateTotal = calculateTotal;
 window.getAmountOfItemsInCart = getAmountOfItemsInCart;
 window.changeAmount = changeAmount;
 window.cartDisplay = cartDisplay;
+window.errorMessage = errorMessage;
 
 export async function checkoutView(){
     const content = await cartDisplay()
+    if(content === null) return errorMessage();
 
     return /*HTML*/`
     <div class="full-height-vh flex col align-items-center full-width">

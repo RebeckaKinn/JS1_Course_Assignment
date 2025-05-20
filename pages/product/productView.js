@@ -19,6 +19,7 @@ export async function productView(){
 async function displayContent(){
     try{
         const data = await fetchProduct(model.input.currentId);
+        if(data === null)return productNotFound();
         if (data) {
             return /*HTML*/`
                 <div class="single-product-layout">
@@ -78,6 +79,6 @@ async function displayContent(){
         }
     } catch (error){
         console.error(error.message);
-        return errorMessage();
+        return null;
     }
 }
