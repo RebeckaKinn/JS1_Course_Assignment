@@ -1,4 +1,6 @@
-
+header{
+    max-width: 100%;
+}
 
 .hidden{
     display: none;
@@ -148,4 +150,8 @@
         .cart-info{
             width: 30%;
         }
+    }
+
+     @media screen and (min-width: 600px){
+        
     }
