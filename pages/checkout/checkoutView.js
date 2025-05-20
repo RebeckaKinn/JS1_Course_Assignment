@@ -14,18 +14,18 @@ export async function checkoutView(){
     const content = await cartDisplay()
 
     return /*HTML*/`
-    <div class="full-height-vh flex col align-items-center">
+    <div class="full-height-vh flex col align-items-center full-width">
         <h1 class="main-color">Checkout</h1>
         <div>
-            <h2>${getAmountOfItemsInCart()} items in cart</h2>
+            <h2>${getAmountOfItemsInCart()} item(s) in cart</h2>
         </div>
-        <section class="max-width-">${content}</section>
+        <section class="full-width padding-sides">${content}</section>
         <section>
             <p>
                 <b>Total:</b>
                 <b>$${calculateTotal(model.input.cart)}</b>
             </p>
-            <div>
+            <div class="checkout-button">
                 <button class="square" onclick="checkoutHandeling()">Order and Pay</button>
             </div>
         </section>

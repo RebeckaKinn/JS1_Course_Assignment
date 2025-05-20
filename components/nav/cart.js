@@ -11,7 +11,7 @@ window.changePage = changePage;
 window.changeAmount = changeAmount;
 window.cartIconToggle = cartIconToggle;
 
-//use a cart logo with updateble number,
+
 
 export function cartView() {
     return /*HTML*/`
@@ -31,8 +31,8 @@ export function cartView() {
                     <b>Total:</b>
                     <b>$${calculateTotal(model.input.cart)}</b>
                 </p>
-                <div>
-                    ${model.input.cart.length <= 0 ? `` : /*HTML*/`<button class="square" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>`}
+                <div class="checkout-button">
+                    ${model.input.cart.length <= 0 ? `` : /*HTML*/`<button class="square square2" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>`}
                 </div>
             </section>
         </div>

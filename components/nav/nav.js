@@ -6,17 +6,15 @@ window.cartView = cartView;
 
 export function nav(){
     return /*HTML*/ `
-    <section>
-        <div>
-            <img src="icons/logo.png" alt="">
+   
+        <div class="header-logo">
+            <div class="logo" onclick="changePage('home')">
+                <img src="icons/logo.png" alt="">
+            </div>
+            <b>PlayBox</b>
         </div>
-        <ul>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-            <li>Home</li>
-        </ul>
+        
     ${cartView()}
-    </section>
+ 
     `;
 }

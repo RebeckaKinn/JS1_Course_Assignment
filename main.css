@@ -21,6 +21,16 @@ a, button{
     font-family: var(--main-font-family) !important;
     letter-spacing: 1px;
     font-weight: 700;
+    font-size: 16px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+img{
+    cursor: pointer;
+}
+
+button:hover{
+    background-color: var(--color-hot-pink) !important;
 }
 
 button.circle{
@@ -40,13 +50,15 @@ button.circle{
     
 }
 button.square{
-    width: 200px;/*for testing*/
+    max-width: 200px;
     background-color: var(--color-dark-gray);
     color: var(--color-main);
     
     border-radius: .2rem;
     padding: 3%;
 }
+
+
 
 .square.glow {
     background-color: yellow;
@@ -172,21 +184,29 @@ button.square2{
     height: 100vh;
 }
 
-.max-width-{
+.max-width-500px{
     max-width: 500px;
 }
+
+.padding-sides{
+    padding: 0 10%;
+}
+
 
 
 /*Main layout*/
 #app{
     min-height: 100vh;
     min-width: 100%;
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: 1fr 5fr 1fr;
+    grid-template-rows: auto 1fr;
+    grid-template-areas: '. headerSection .'
+                        '. mainSection .';
 }
 
 main{
-    
+    grid-area: mainSection;
     padding: 0 5%;
     height: 100%;
     min-height: 100vh;
@@ -198,16 +218,17 @@ main{
     box-shadow: 0px 0px 32px 0px var(--color-shadow);
 }
 
-@media screen and (min-width: 700px) {
-    main{
-        margin: 0 5%;
-
+@media screen and (max-width: 1400px) {
+    #app{
+        grid-template-columns: 1fr 10fr 1fr;
     }
 }
-@media screen and (min-width: 1000px) {
-    main{
-        margin: 0 10%;
-
+@media screen and (max-width: 800px) {
+    #app{
+    grid-template-columns: 0fr 1fr 0fr;
     }
+    .padding-sides{
+    padding: 0 0;
+}
 }
 
