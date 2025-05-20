@@ -31,9 +31,10 @@ export async function updateView(){
     try {
         const content = await renderPage();
         const finalHTML = /*HTML*/ `
-            
-            <main>
+            <header>
             ${cartView()}
+            </header>
+            <main>
             ${model.app.currentPage !== "home" ? backButton() : ''}
                 ${content}
             </main>
