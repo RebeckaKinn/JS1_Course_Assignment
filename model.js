@@ -30,7 +30,7 @@ export const model = {
     },
 
     input:{
-        currentId: '',
+        currentId: null,
         recentOrder: 0,
         currentFilter: "",
         cart: [

@@ -46,7 +46,10 @@ function createFilters(newData) {
 
 export async function fetchProduct(chosenID){
   try{
-    const response = await fetch(`${NOROFF_API_URL}/${chosenID}`, options);
+    const savedID = localStorage.getItem('chosenProductId');
+    let newID = chosenID;
+    if(newID === null) newID = savedID;
+    const response = await fetch(`${NOROFF_API_URL}/${newID}`, options);
     if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
       }
@@ -56,6 +59,7 @@ export async function fetchProduct(chosenID){
     return result.data || {};
 } catch (error){
     console.error(error.message);
+    return null;
 }
 }
 

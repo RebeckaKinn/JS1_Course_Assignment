@@ -1,10 +1,12 @@
 import { model } from "./model.js";
 import { updateView } from "./app.js";
+import { errorMessage } from "../../components/error/errorMessage.js";
 
-
+window.errorMessage = errorMessage;
 export function changePage(option){
     if(model.app.pages.some(p => p.name === option)){
         model.app.currentPage = option;
+        localStorage.setItem('currentPage', option);
     }
     model.app.cartControls = false;
     updateView();
@@ -12,17 +14,23 @@ export function changePage(option){
 
 
 export async function renderPage() {
+    const savedPage = localStorage.getItem('currentPage');
+
+    if (savedPage && model.app.pages.some(p => p.name === savedPage)) {
+        model.app.currentPage = savedPage;
+    }
     const page = model.app.pages.find(p => p.name === model.app.currentPage);
     if (page && typeof page.path === "function") {
         return await page.path(); 
     }
 
     console.error("Page not found or path is not a function:", page);
-    return "<p>Page not found</p>";
+    return errorMessage();
 }
 
 export function chosenProduct(id){
     model.input.currentId = id;
+    localStorage.setItem('chosenProductId', id);
     changePage(model.app.pages[1].name);
 }
 export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt) {
