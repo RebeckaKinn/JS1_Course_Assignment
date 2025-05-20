@@ -47,6 +47,9 @@ export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPr
     }, 2000);
 }
 export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt){
+    const storedCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    model.input.cart = storedCart;
+    
     const existingProduct = model.input.cart.find((item) => item.id === newID);
     if (existingProduct) {
         existingProduct.amount += 1;
@@ -64,33 +67,39 @@ export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale
 
         model.input.cart.push(newProduct);
     }
+    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
     updateView();
 }
 
-export function removeFromCart(chosenID){
-    //maybe remove all instead?
+export function removeFromCart(chosenID) {
     model.input.cart = model.input.cart.map((item) => {
         if (item.id === chosenID) {
             if (item.amount > 1) {
-                return { ...item, amount: item.amount - 1 }; 
-            } 
+                return { ...item, amount: item.amount - 1 };
+            }
             return null; 
         }
         return item;
-    }).filter(Boolean); 
+    }).filter(Boolean);
+    
+    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
     updateView();
 }
 
 
+//DOES NOT WORK WITH LOCALSTORAGE YET
 export function checkoutHandeling(){
     const generateOrderID = (model.data.orderHistory.length + 10)*55;
     model.data.orderHistory.push({
         orderID: generateOrderID,
-        date: new Date(),
-        orderDetails: model.input.cart
+        date: new Date().toISOString(),
+        orderDetails: [...model.input.cart]
     })
+    localStorage.setItem("orderHistory", JSON.stringify(model.data.orderHistory));
     model.input.recentOrder = generateOrderID;
+    localStorage.setItem("orderID", JSON.stringify(generateOrderID));
     model.input.cart = [];
+    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
     changePage(model.app.pages[3].name);
 }
 
@@ -103,34 +112,38 @@ export function calculateTotal(list){
     list.forEach((element) => {
         amount += element.onSale ? element.discountedPrice * element.amount : element.price * element.amount;
     })
+    localStorage.setItem("shoppingCart", JSON.stringify(list));
     return amount.toFixed(2);
 }
 
 export function getAmountOfItemsInCart(){
+    const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
     let amount = 0;
-    model.input.cart.forEach((element) => {
+    cart.forEach((element) => {
         amount += element.amount;
     })
+    
     return amount;
 }
 
 
-export function changeAmount(chosenID, add = null){
+export function changeAmount(chosenID, add = null) {
     model.input.cart.forEach((element) => {
-        if(element.id === chosenID){
-            if(add){
+        if (element.id === chosenID) {
+            if (add === true) {
                 element.amount++;
-            }else if(!add){
+            } else if (add === false) {
                 element.amount--;
-                if(element.amount <= 0) removeFromCart(element.id);
-            }else{
-                console.error("Wrong input in change amount.")
+                if (element.amount <= 0) removeFromCart(element.id);
+            } else {
+                console.error("Wrong input in changeAmount.");
             }
-            
         }
-    })
+    });
+    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
     updateView();
 }
+
 
 
 export function findRecentOrder(){

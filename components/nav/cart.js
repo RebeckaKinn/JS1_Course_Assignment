@@ -64,6 +64,8 @@ function displayCartIcon(){
 
 
 export function cartDisplay() {
+    const storedCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    model.input.cart = storedCart;
     if (model.input.cart.length <= 0) {
         return null;
     }
