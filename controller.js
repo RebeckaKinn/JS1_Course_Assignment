@@ -36,10 +36,10 @@ export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPr
     setTimeout(() => {
         button.textContent = "Add to Cart";
         button.classList.remove("glow");
-    }, 1500);
+    }, 1000);
     setTimeout(() => {
         addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt);
-    }, 2000);
+    }, 1000);
 }
 export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt){
     model.input.cart = shoppingCartGetItem();
