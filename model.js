@@ -31,11 +31,9 @@ export const model = {
 
     input:{
         currentId: null,
-        recentOrder: 0,
+        recentOrder: null,
         currentFilter: "",
-        cart: [
-           
-        ],
+        cart: [],
     },
 
     data:{

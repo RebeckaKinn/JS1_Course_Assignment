@@ -1,12 +1,11 @@
 import { model } from "./model.js";
 import { updateView } from "./app.js";
 import { errorMessage } from "../../components/error/errorMessage.js";
-import { orderIDSetItem, shoppingCartEmpty, orderHistorySetItem, currentPageSetItem, currentPageGetItem, chosenProductIdSetItem, shoppingCartSetItem } from '../../components/localStorage/handeling.js'
+import { orderIDGetItem, orderIDSetItem, shoppingCartEmpty, orderHistoryGetItem, orderHistorySetItem, currentPageSetItem, currentPageGetItem, chosenProductIdSetItem, shoppingCartSetItem } from '../../components/localStorage/handeling.js'
 
 window.errorMessage = errorMessage;
 export function changePage(option){
     if(model.app.pages.some(p => p.name === option)){
-        model.app.currentPage = option;
         currentPageSetItem(option);
     }
     model.app.cartControls = false;
@@ -15,11 +14,7 @@ export function changePage(option){
 
 
 export async function renderPage() {
-    const savedPage = currentPageGetItem();
-
-    if (savedPage && model.app.pages.some(p => p.name === savedPage)) {
-        model.app.currentPage = savedPage;
-    }
+    currentPageGetItem();
     const page = model.app.pages.find(p => p.name === model.app.currentPage);
     if (page && typeof page.path === "function") {
         return await page.path(); 
@@ -86,7 +81,8 @@ export function removeFromCart(chosenID) {
 }
 
 export function checkoutHandeling(){
-    const generateOrderID = (model.data.orderHistory.length + 10)*55;
+    orderHistoryGetItem();
+    const generateOrderID = Math.random()*(model.data.orderHistory.length+5)*55;
     model.data.orderHistory.push({
         orderID: generateOrderID,
         date: new Date().toISOString(),
@@ -143,7 +139,9 @@ export function changeAmount(chosenID, add = null) {
 
 
 export function findRecentOrder(){
-    const recentOrder = model.data.orderHistory.find((item) => item.orderID === model.input.recentOrder);
+    orderHistoryGetItem();
+    orderIDGetItem();
+    const recentOrder = model.data.orderHistory.find((item) => item.orderID == model.input.recentOrder);
     return recentOrder;
 }
 

@@ -30,19 +30,33 @@ export function chosenProductIdSetItem(id){
 
 
 export function currentPageSetItem(option){
-    localStorage.setItem('currentPage', option);
+    model.app.currentPage = option;
+    localStorage.setItem('currentPage', model.app.currentPage);
 }
 
 export function currentPageGetItem(){
-    return localStorage.getItem('currentPage');
+    const savedPage = localStorage.getItem('currentPage');
+        if (savedPage && model.app.pages.some(p => p.name === savedPage)) {
+            model.app.currentPage = savedPage;
+        }
+  
 }
+
+
+
 
 
 export function orderHistorySetItem(){
     localStorage.setItem("orderHistory", JSON.stringify(model.data.orderHistory));
 }
+export function orderHistoryGetItem(){
+    model.data.orderHistory = JSON.parse(localStorage.getItem("orderHistory"));
+}
 
 export function orderIDSetItem(generateOrderID){
     model.input.recentOrder = generateOrderID;
     localStorage.setItem("orderID", JSON.stringify(generateOrderID));
+}
+export function orderIDGetItem(){
+    model.input.recentOrder = localStorage.getItem("orderID") || null;
 }
