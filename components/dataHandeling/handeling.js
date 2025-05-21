@@ -5,6 +5,10 @@ export function shoppingCartGetItem(){
     model.input.cart = storedCart;
     return model.input.cart;
 }
+export function shoppingCartUpdate(){
+    const storedCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    model.input.cart = storedCart;
+}
 export function shoppingCartEmpty(){
     model.input.cart = [];
     localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));

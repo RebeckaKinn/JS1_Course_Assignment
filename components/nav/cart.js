@@ -1,7 +1,7 @@
 import { model } from "../../model.js";
 import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 import { cartIconToggle } from "./cartController.js";
-import { shoppingCartGetItem } from '../dataHandeling/handeling.js';
+import { shoppingCartGetItem, shoppingCartUpdate } from '../dataHandeling/handeling.js';
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;
@@ -12,10 +12,10 @@ window.changePage = changePage;
 window.changeAmount = changeAmount;
 window.cartIconToggle = cartIconToggle;
 window.shoppingCartGetItem = shoppingCartGetItem;
-
+window.shoppingCartUpdate = shoppingCartUpdate;
 
 export function cartView() {
-    
+    shoppingCartUpdate();
     return /*HTML*/`
     <div class="cart-container">
         ${displayCartIcon()}
@@ -23,6 +23,13 @@ export function cartView() {
         <span class="close-cart-container">
             <label class="close-cart" for="cart" onclick="cartIconToggle()">&#10005;</label>
         </span>
+         ${model.input.cart.length <= 0 ? /*HTML*/`
+            <div class="flex col justify-content-center align-items-center">
+                <h2>Looks like your cart is empty!</h2>
+                <button onclick="changePage('home')" class="square square2">Get shoppin'</button>
+            </div>
+            ` : /*HTML*/`
+            
             <div class="flex-space-between">
                 <h2>Shopping Cart</h2>
                 <h2>${getAmountOfItemsInCart()} items</h2>
@@ -34,9 +41,10 @@ export function cartView() {
                     <b>$${calculateTotal(model.input.cart)}</b>
                 </p>
                 <div class="checkout-button">
-                    ${model.input.cart.length <= 0 ? `` : /*HTML*/`<button class="square square2" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>`}
+                    <button class="square square2" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
                 </div>
             </section>
+            `}
         </div>
     </div>`;
 }
