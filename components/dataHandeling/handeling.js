@@ -50,7 +50,7 @@ export function orderHistorySetItem(){
     localStorage.setItem("orderHistory", JSON.stringify(model.data.orderHistory));
 }
 export function orderHistoryGetItem(){
-    model.data.orderHistory = JSON.parse(localStorage.getItem("orderHistory"));
+    model.data.orderHistory = JSON.parse(localStorage.getItem("orderHistory")) || [];
 }
 
 export function orderIDSetItem(generateOrderID){
