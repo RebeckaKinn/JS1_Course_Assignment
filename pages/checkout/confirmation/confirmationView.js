@@ -1,4 +1,3 @@
-import { model } from "../../../model.js";
 import { findRecentOrder, calculateTotal } from "../../../controller.js";
 
 window.calculateTotal = calculateTotal;
