@@ -9,3 +9,7 @@
 .white{
     color: var(--color-white);
 }
+
+.pink{
+    color: var(--color-hot-pink);
+}

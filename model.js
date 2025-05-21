@@ -2,6 +2,7 @@ import { homeView } from './pages/home/home.js'
 import { productView } from './pages/product/productView.js'
 import { checkoutView } from './pages/checkout/checkoutView.js'
 import { confirmationView } from './pages/checkout/confirmation/confirmationView.js'
+import { orderHistory } from './pages/history/orderHistory.js'
 
 export const model = {
     app:{
@@ -23,6 +24,10 @@ export const model = {
             {
                 name: "confirmation",
                 path: confirmationView
+            },
+            {
+                name: "orderHistory",
+                path: orderHistory
             },
 
         ],

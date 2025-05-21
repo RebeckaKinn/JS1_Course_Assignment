@@ -74,6 +74,11 @@ button.square2{
     scale: 0.9;
 }
 
+.border-bottom{
+    padding-bottom: 10px;
+    border-bottom: 1px solid var(--color-hot-pink);
+}
+
 
 .flex{
     display: flex;

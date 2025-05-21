@@ -2,17 +2,21 @@
 import { calculateTotal } from "../../controller.js";
 import { orderHistoryGetItem } from "../../components/dataHandeling/handeling.js";
 import { model } from "../../model.js"
+import { productNotFound } from "../../components/errorMessage/noProductsFound.js";
+import { errorMessage } from "../../components/errorMessage/errorMessage.js";
 
 window.calculateTotal = calculateTotal;
 window.orderHistoryGetItem = orderHistoryGetItem;
+window.productNotFound = productNotFound;
+window.errorMessage = errorMessage;
 
-export async function confirmationView(){
+export async function orderHistory(){
     const content = await getOrderInformation();
     return /*HTML*/`
-        <div>
+        <section>
             <h1 class="main-color">Order History</h1>
             <ul>${content}</ul>
-        </div>
+        </section>
     `;
     
 }
@@ -24,8 +28,9 @@ async function getOrderInformation(){
             let items = '';
             model.data.orderHistory.map(element => {
                 items += /*HTML*/`
-                    <li>
+                    <li class="border-bottom">
                         <p>Order ID: <strong>${element.orderID}</strong></p>
+                        <p>Date: <strong>${element.date}</strong></p>
                         <ul>
                         ${element.orderDetails.map(item => /*HTML*/`
                             <li>
@@ -38,19 +43,13 @@ async function getOrderInformation(){
                 
                 `;
             })
-            return /*HTML*/`
-                
-        `;
+           return items;
         }else{
-            return /*HTML*/`
-            <div>
-                <b>Order history is empty.</b>
-            </div>
-            `;
+            return productNotFound();
         }
     
     } catch (error) {
       console.error(error.message);
-      return []; 
+      return errorMessage(); 
   }
 }
