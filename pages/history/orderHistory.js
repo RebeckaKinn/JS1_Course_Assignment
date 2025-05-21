@@ -26,7 +26,7 @@ async function getOrderInformation(){
         await orderHistoryGetItem();
         if(!model.data.orderHistory.length <= 0){
             let items = '';
-            model.data.orderHistory.map(element => {
+            model.data.orderHistory.toReversed().map(element => {
                 items += /*HTML*/`
                     <li class="border-bottom">
                         <p>Order ID: <strong>${element.orderID}</strong></p>
