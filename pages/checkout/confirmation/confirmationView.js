@@ -12,6 +12,9 @@ export async function confirmationView(){
             <div>${content}</div>
             <p>We will send a confirmation email with further details.</p>
             <p>Happy gaming!</p>
+            <div class="back-button flex row align-items-center justify-content-center">
+                <button class="back-button" onclick="changePage('orderHistory')">View order history</button>
+            </div>
         </div>
     `;
     
