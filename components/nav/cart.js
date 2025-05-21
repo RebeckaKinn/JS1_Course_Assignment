@@ -1,6 +1,7 @@
 import { model } from "../../model.js";
 import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 import { cartIconToggle } from "./cartController.js";
+import { shoppingCartGetItem } from '../localStorage/handeling.js';
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;
@@ -10,10 +11,11 @@ window.getAmountOfItemsInCart = getAmountOfItemsInCart;
 window.changePage = changePage;
 window.changeAmount = changeAmount;
 window.cartIconToggle = cartIconToggle;
-
+window.shoppingCartGetItem = shoppingCartGetItem;
 
 
 export function cartView() {
+    
     return /*HTML*/`
     <div class="cart-container">
         ${displayCartIcon()}
@@ -29,7 +31,7 @@ export function cartView() {
             <section class="full-height flex-space-between-col">
                 <p class="width-30 flex-space-between">
                     <b>Total:</b>
-                    <b>$${calculateTotal(model.input.cart)}</b>
+                    <b>$${calculateTotal()}</b>
                 </p>
                 <div class="checkout-button">
                     ${model.input.cart.length <= 0 ? `` : /*HTML*/`<button class="square square2" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>`}
@@ -64,9 +66,8 @@ function displayCartIcon(){
 
 
 export function cartDisplay() {
-    const storedCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-    model.input.cart = storedCart;
-    if (model.input.cart.length <= 0) {
+    const content = shoppingCartGetItem();
+    if (content <= 0) {
         return null;
     }
 
@@ -79,7 +80,7 @@ export function cartDisplay() {
             <b>TOTAL</b>
         </div>
 
-        ${model.input.cart.map(element => /*HTML*/`
+        ${content.map(element => /*HTML*/`
         <div class="cart-grid cart-item">
             <div class="cart-product">
                 <img src="${element.image}" alt="${element.alt}">

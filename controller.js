@@ -1,12 +1,13 @@
 import { model } from "./model.js";
 import { updateView } from "./app.js";
 import { errorMessage } from "../../components/error/errorMessage.js";
+import { orderIDSetItem, shoppingCartEmpty, orderHistorySetItem, currentPageSetItem, currentPageGetItem, chosenProductIdSetItem, shoppingCartSetItem } from '../../components/localStorage/handeling.js'
 
 window.errorMessage = errorMessage;
 export function changePage(option){
     if(model.app.pages.some(p => p.name === option)){
         model.app.currentPage = option;
-        localStorage.setItem('currentPage', option);
+        currentPageSetItem(option);
     }
     model.app.cartControls = false;
     updateView();
@@ -14,7 +15,7 @@ export function changePage(option){
 
 
 export async function renderPage() {
-    const savedPage = localStorage.getItem('currentPage');
+    const savedPage = currentPageGetItem();
 
     if (savedPage && model.app.pages.some(p => p.name === savedPage)) {
         model.app.currentPage = savedPage;
@@ -29,8 +30,7 @@ export async function renderPage() {
 }
 
 export function chosenProduct(id){
-    model.input.currentId = id;
-    localStorage.setItem('chosenProductId', id);
+    chosenProductIdSetItem(id);
     changePage(model.app.pages[1].name);
 }
 export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt) {
@@ -47,8 +47,7 @@ export function handleAddToCart(button, newID, newTitle, newPrice, newDiscountPr
     }, 2000);
 }
 export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale, newImage, newImageAlt){
-    const storedCart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
-    model.input.cart = storedCart;
+    model.input.cart = shoppingCartGetItem();
     
     const existingProduct = model.input.cart.find((item) => item.id === newID);
     if (existingProduct) {
@@ -67,7 +66,7 @@ export function addToCart(newID, newTitle, newPrice, newDiscountPrice, newOnSale
 
         model.input.cart.push(newProduct);
     }
-    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
+    shoppingCartSetItem();
     updateView();
 }
 
@@ -82,12 +81,10 @@ export function removeFromCart(chosenID) {
         return item;
     }).filter(Boolean);
     
-    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
+    shoppingCartSetItem();
     updateView();
 }
 
-
-//DOES NOT WORK WITH LOCALSTORAGE YET
 export function checkoutHandeling(){
     const generateOrderID = (model.data.orderHistory.length + 10)*55;
     model.data.orderHistory.push({
@@ -95,11 +92,10 @@ export function checkoutHandeling(){
         date: new Date().toISOString(),
         orderDetails: [...model.input.cart]
     })
-    localStorage.setItem("orderHistory", JSON.stringify(model.data.orderHistory));
-    model.input.recentOrder = generateOrderID;
-    localStorage.setItem("orderID", JSON.stringify(generateOrderID));
-    model.input.cart = [];
-    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
+    orderHistorySetItem();
+    
+    orderIDSetItem(generateOrderID);
+    shoppingCartEmpty();
     changePage(model.app.pages[3].name);
 }
 
@@ -107,17 +103,17 @@ export function calculateSubTotal(amount, onSale, price, discountedPrice){
     return (onSale ? discountedPrice * amount : price * amount).toFixed(2);
 }
 
-export function calculateTotal(list){
+export function calculateTotal(){
     let amount = 0;
-    list.forEach((element) => {
+    model.input.cart.forEach((element) => {
         amount += element.onSale ? element.discountedPrice * element.amount : element.price * element.amount;
     })
-    localStorage.setItem("shoppingCart", JSON.stringify(list));
+    shoppingCartSetItem();
     return amount.toFixed(2);
 }
 
 export function getAmountOfItemsInCart(){
-    const cart = JSON.parse(localStorage.getItem("shoppingCart")) || [];
+    const cart = shoppingCartGetItem();
     let amount = 0;
     cart.forEach((element) => {
         amount += element.amount;
@@ -140,7 +136,7 @@ export function changeAmount(chosenID, add = null) {
             }
         }
     });
-    localStorage.setItem("shoppingCart", JSON.stringify(model.input.cart));
+    shoppingCartSetItem();
     updateView();
 }
 

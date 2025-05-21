@@ -1,4 +1,5 @@
 import { model } from "./model.js";
+import {chosenProductIdGetItem} from './components/localStorage/handeling.js'
 
 const NOROFF_API_URL = "https://v2.api.noroff.dev/gamehub"
 
@@ -46,9 +47,7 @@ function createFilters(newData) {
 
 export async function fetchProduct(chosenID){
   try{
-    const savedID = localStorage.getItem('chosenProductId');
-    let newID = chosenID;
-    if(newID === null) newID = savedID;
+    const newID = chosenProductIdGetItem(chosenID);
     const response = await fetch(`${NOROFF_API_URL}/${newID}`, options);
     if (!response.ok) {
         throw new Error(`Response status: ${response.status}`);
