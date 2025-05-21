@@ -1,7 +1,7 @@
 import { model } from "../../model.js";
 import { fetchMainData } from "../../api.js";
 import { chosenProduct, handleAddToCart, filterController, resetFilter } from "../../controller.js";
-import { errorMessage } from "../../components/error/errorMessage.js";
+import { errorMessage } from "../../components/errorMessage/errorMessage.js";
 
 window.chosenProduct = chosenProduct;
 window.handleAddToCart = handleAddToCart;

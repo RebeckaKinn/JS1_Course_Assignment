@@ -1,7 +1,7 @@
 import { model } from "../../model.js";
 import { changeAmount ,removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 import { cartDisplay } from "../../components/nav/cart.js";
-import { errorMessage } from "../../components/error/errorMessage.js";
+import { errorMessage } from "../../components/errorMessage/errorMessage.js";
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;

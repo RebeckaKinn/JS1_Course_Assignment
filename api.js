@@ -1,5 +1,5 @@
 import { model } from "./model.js";
-import {chosenProductIdGetItem} from './components/localStorage/handeling.js'
+import {chosenProductIdGetItem} from './components/dataHandeling/handeling.js'
 
 const NOROFF_API_URL = "https://v2.api.noroff.dev/gamehub"
 

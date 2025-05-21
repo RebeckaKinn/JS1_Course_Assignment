@@ -1,8 +1,8 @@
 import { model } from "../../model.js";
 import { fetchProduct } from "../../api.js";
 import { handleAddToCart } from "../../controller.js";
-import { errorMessage } from "../../components/error/errorMessage.js";
-import { productNotFound } from "../../components/error/noProductsFound.js";
+import { errorMessage } from "../../components/errorMessage/errorMessage.js";
+import { productNotFound } from "../../components/errorMessage/noProductsFound.js";
 
 
 window.handleAddToCart = handleAddToCart;

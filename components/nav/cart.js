@@ -1,7 +1,7 @@
 import { model } from "../../model.js";
 import {changeAmount, changePage, removeFromCart, checkoutHandeling, calculateSubTotal, calculateTotal, getAmountOfItemsInCart } from "../../controller.js";
 import { cartIconToggle } from "./cartController.js";
-import { shoppingCartGetItem } from '../localStorage/handeling.js';
+import { shoppingCartGetItem } from '../dataHandeling/handeling.js';
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;

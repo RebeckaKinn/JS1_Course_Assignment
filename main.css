@@ -2,7 +2,7 @@
 @import url(variables.css);
 @import url(colors.css);
 @import url(components/loading/loading.css);
-@import url(components/error/error.css);
+@import url(components/errorMessage/error.css);
 @import url(pages/home/home.css);
 @import url(components/nav/menu.css);
 @import url(pages/product/product.css);

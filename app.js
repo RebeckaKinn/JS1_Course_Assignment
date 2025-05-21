@@ -3,7 +3,7 @@ import { model } from "./model.js";
 import { changePage, renderPage } from "./controller.js";
 import { backButton } from './components/backButton.js'
 import { loading } from './components/loading/loadingMessage.js'
-import { errorMessage } from './components/error/errorMessage.js'
+import { errorMessage } from './components/errorMessage/errorMessage.js'
 import { nav } from './components/nav/nav.js'
 
 window.changePage = changePage;

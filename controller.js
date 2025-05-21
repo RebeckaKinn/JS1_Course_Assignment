@@ -1,7 +1,7 @@
 import { model } from "./model.js";
 import { updateView } from "./app.js";
-import { errorMessage } from "../../components/error/errorMessage.js";
-import { orderIDGetItem, orderIDSetItem, shoppingCartEmpty, orderHistoryGetItem, orderHistorySetItem, currentPageSetItem, currentPageGetItem, chosenProductIdSetItem, shoppingCartSetItem } from '../../components/localStorage/handeling.js'
+import { errorMessage } from "../../components/errorMessage/errorMessage.js";
+import { orderIDGetItem, orderIDSetItem, shoppingCartEmpty, orderHistoryGetItem, orderHistorySetItem, currentPageSetItem, currentPageGetItem, chosenProductIdSetItem, shoppingCartSetItem } from '../../components/dataHandeling/handeling.js'
 
 window.errorMessage = errorMessage;
 export function changePage(option){
