@@ -99,9 +99,9 @@ export function calculateSubTotal(amount, onSale, price, discountedPrice){
     return (onSale ? discountedPrice * amount : price * amount).toFixed(2);
 }
 
-export function calculateTotal(){
+export function calculateTotal(list){
     let amount = 0;
-    model.input.cart.forEach((element) => {
+    list.forEach((element) => {
         amount += element.onSale ? element.discountedPrice * element.amount : element.price * element.amount;
     })
     shoppingCartSetItem();

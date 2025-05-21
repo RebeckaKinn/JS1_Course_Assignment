@@ -31,7 +31,7 @@ export function cartView() {
             <section class="full-height flex-space-between-col">
                 <p class="width-30 flex-space-between">
                     <b>Total:</b>
-                    <b>$${calculateTotal()}</b>
+                    <b>$${calculateTotal(model.input.cart)}</b>
                 </p>
                 <div class="checkout-button">
                     ${model.input.cart.length <= 0 ? `` : /*HTML*/`<button class="square square2" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>`}
