@@ -193,6 +193,10 @@ width: auto;
             padding: 15px 30px !important;
         }
     }
+
+    .pointer{
+        cursor: pointer;
+    }
     
     @media screen and (min-width: 800px){
         .cart-info{

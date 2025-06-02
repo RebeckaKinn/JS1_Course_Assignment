@@ -14,7 +14,7 @@ export function nav(){
             <b>PlayBox</b>
         </div>
         <ul class="flex row align-items-center gap-10 ">
-            <li onclick="changePage('orderHistory')" class="pink">Order History</li>
+            <li onclick="changePage('orderHistory')" class="pink pointer">Order History</li>
             <li>${cartView()}</li>
         </ul>
         
