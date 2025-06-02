@@ -6,8 +6,6 @@
 @import url(pages/home/home.css);
 @import url(components/nav/menu.css);
 @import url(pages/product/product.css);
-@import url(pages/checkout/checkout.css);
-@import url(pages/checkout/confirmation/confirmation.css);
 
 body{
     font-family: var(--main-font-family);
@@ -199,7 +197,7 @@ button.square2{
 
 
 
-/*Main layout*/
+
 #app{
     min-height: 100vh;
     min-width: 100%;
