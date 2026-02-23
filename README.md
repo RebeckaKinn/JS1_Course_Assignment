@@ -71,6 +71,7 @@ cd JS1_Course_Assignment
   <li>HTML5</li>
   <li>CSS3</li>
   <li>Vanilla JavaScript (ES6+)</li>
+  <li>JS Module</li>
   <li>Noroff API</li>
   <li>Local Storage</li>
   <li>MVC architecture pattern</li>
