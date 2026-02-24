@@ -1,15 +1,14 @@
-import { changePage } from '../../controller.js'
+import { changePage } from "../../controller.js";
 
 window.changePage = changePage;
 
-export function errorMessage(){
-    return /*HTML*/ `
-        <div class="error-container">
+export function errorMessage() {
+  return /*HTML*/ `
+    <div class="error-container">
       <div class="error-box">
-        <div class="error-icon">⚠️</div>
-        <h1 class="error-title">Oops... Something went wrong!</h1>
+        <h1 class="error-title code-txt lowercase">Something went wrong</h1>
         <p class="error-text">We couldn't retrieve the information. Please try again later.</p>
-        <button class="error-button"  onclick="changePage('home')">Try Again</button>
+        <button class="error-button code-txt lowercase glow"  onclick="changePage('home')">Try Again</button>
       </div>
     </div>
     `;
