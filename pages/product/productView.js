@@ -4,28 +4,28 @@ import { handleAddToCart } from "../../controller.js";
 import { errorMessage } from "../../components/errorMessage/errorMessage.js";
 import { productNotFound } from "../../components/errorMessage/noProductsFound.js";
 
-
 window.handleAddToCart = handleAddToCart;
 window.errorMessage = errorMessage;
 window.productNotFound = productNotFound;
 
-export async function productView(){
-    const content = await displayContent();
-    if(content == null) productNotFound();
-    else return /*HTML*/`
-        <section >${content}</section>
+export async function productView() {
+  const content = await displayContent();
+  if (content == null) productNotFound();
+  else
+    return /*HTML*/ `
+        <section class="main-side-padding">${content}</section>
     `;
 }
 
-async function displayContent(){
-    try {
-        const data = await fetchProduct(model.input.currentId);
+async function displayContent() {
+  try {
+    const data = await fetchProduct(model.input.currentId);
 
-        if (!data || !data.id || !data.image || !data.title) {
-            return productNotFound();
-        }
+    if (!data || !data.id || !data.image || !data.title) {
+      return productNotFound();
+    }
 
-        return /*HTML*/`
+    return /*HTML*/ `
             <div class="single-product-layout">
                 <div class="product-image">
                     <img src="${data.image.url}" alt="${data.image.alt}">
@@ -39,9 +39,11 @@ async function displayContent(){
                                 ${data.favorite ? `&#9733;` : `&#9734;`}
                             </div>
                             <div class="flex row align-items-center gap-5">
-                                ${data.onSale 
-                                    ? `<p class="discount">${data.price}</p> <p class="red price">${data.discountedPrice}</p>` 
-                                    : `<p class="price white">${data.price}</p>`}
+                                ${
+                                  data.onSale
+                                    ? `<p class="discount">${data.price}</p> <p class="red price">${data.discountedPrice}</p>`
+                                    : `<p class="price white">${data.price}</p>`
+                                }
                             </div>
                         </div>
                     </div>
@@ -50,7 +52,7 @@ async function displayContent(){
                         <li><p>Age Rating:</p><p class="white">${data.ageRating}</p></li>
                         <li><p>Release Date:</p><p class="white">${data.released}</p></li>
                         <li><p>Description:</p><p class="white">${data.description}</p></li>
-                        <li><p>Tags:</p><p class="white"><i>${data.tags.join(', ')}</i></p></li>
+                        <li><p>Tags:</p><p class="white"><i>${data.tags.join(", ")}</i></p></li>
                     </ul>
                     <div class="flex row align-items-center justify-content-center">
                         <button class="square" onclick="handleAddToCart(this,'${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
@@ -58,8 +60,8 @@ async function displayContent(){
                 </div>
             </div>
         `;
-    } catch (error) {
-        console.error(error.message);
-        return productNotFound();
-    }
+  } catch (error) {
+    console.error(error.message);
+    return productNotFound();
+  }
 }

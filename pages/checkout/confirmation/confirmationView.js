@@ -3,10 +3,10 @@ import { findRecentOrder, calculateTotal } from "../../../controller.js";
 window.calculateTotal = calculateTotal;
 window.findRecentOrder = findRecentOrder;
 
-export async function confirmationView(){
-    const content = await getOrderInformation();
-    return /*HTML*/`
-        <div class="flex col align-items-center justify-content-center full-height-vh">
+export async function confirmationView() {
+  const content = await getOrderInformation();
+  return /*HTML*/ `
+        <div class="flex col align-items-center justify-content-center full-height-vh main-side-padding">
             <h1 class="main-color">Order Confirmation</h1>
             <p>Thank you for your purchase!</p>
             <div>${content}</div>
@@ -17,29 +17,32 @@ export async function confirmationView(){
             </div>
         </div>
     `;
-    
 }
 
-async function getOrderInformation(){
-    const data = await findRecentOrder();
-    if(data){
-        return /*HTML*/`
+async function getOrderInformation() {
+  const data = await findRecentOrder();
+  if (data) {
+    return /*HTML*/ `
             <p>Your order ID is: <strong>${data.orderID}</strong></p>
             <h2>Order Summary</h2>
             <ul>
-                ${data.orderDetails.map(item => `
+                ${data.orderDetails
+                  .map(
+                    (item) => `
                     <li>
                         <strong>${item.title}</strong> - ${item.amount} x $${item.discountedPrice.toFixed(2)}
                     </li>
-                `).join('')}
+                `,
+                  )
+                  .join("")}
             </ul>
             <p><strong>Total: $${calculateTotal(data.orderDetails)}</strong></p>
     `;
-    }else{
-        return /*HTML*/`
+  } else {
+    return /*HTML*/ `
         <div>
             <b>Order history is empty.</b>
         </div>
         `;
-    }
+  }
 }

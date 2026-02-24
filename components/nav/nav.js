@@ -11,7 +11,7 @@ export function nav() {
             <div class="logo" onclick="changePage('home')">
                 <img src="icons/logo.png" alt="">
             </div>
-            <p class="code-txt">PlayBox</p>
+            <p class="code-txt glow-text">PlayBox</p>
         </div>
         <ul class="flex row align-items-center gap-10 ">
             <li onclick="changePage('orderHistory')" class="code-txt main-color pointer txt-break-none lowercase">Order History</li>

@@ -18,27 +18,14 @@ export async function homeView() {
   const items = await displayItems();
   if (items === null) return errorMessage();
   return /*HTML*/ `
-    <section class="flex col">
-    <h1>Welcome to PlayBox </h1>
-    <h2>Your Ultimate Gaming Destination!</h2>
-    <p>Discover the latest and greatest games right here at PlayBox! Whether you're into action-packed adventures, thrilling RPGs, or competitive multiplayer battles, we have something for every gamer. Explore top-rated titles, exclusive deals, and must-play classics—all in one place.</p>
-    <ul>
-        <li>
-            <p>&#10022; New Releases & Bestsellers</p>
-        </li>
-        <li>
-            <p>&#10022; Exclusive Discounts & Special Offers</p>
-        </li>
-        <li>
-            <p>&#10022; Games for Every Platform & Genre</p>
-        </li>
-    </ul>
-    <p>Find your next favorite game below and start playing today! 🚀👇</p>
+  <div class="flex col gap-1rem">
+  ${landingBanner()}
+    <section class="flex col main-side-padding">
     <section class="filter-container">${filterButton()}</section>
     
     <div class="item-container">${items}</div>
     </section>
-    
+    </div>
     
     `;
 }
@@ -104,7 +91,9 @@ async function displayItems() {
 function filterButton() {
   return /*HTML*/ `
     <fieldset class="dropdownFilter">
-        <legend class="filterButton code-txt" >Filter</legend>
+        <legend class="filterButton code-txt lowercase">
+            ${model.input.currentFilter == "" ? "Filter" : model.input.currentFilter}
+        </legend>
         <ul class="filterOptions" id="filterOptions">
             ${model.data.filter.genre
               .map(
@@ -116,11 +105,34 @@ function filterButton() {
             `,
               )
               .join("")}
-            <li>
-                <p onclick="resetFilter()">Reset</p>
-            </li>
+            <li onclick="resetFilter()">Reset</li>
         </ul>
-        <p>${model.input.currentFilter == "" ? "" : `by: <span class="code-txt pink">${model.input.currentFilter}</span>`}</p>
     </fieldset>
+    `;
+}
+
+function landingBanner() {
+  return /*HTML*/ `
+  <section class="frontPageBanner">
+    <div class="overlay flex col justify-content-end">
+        <div class="flex col main-title">
+            <h1 class="code-txt pink glow-text">PlayBox</h1>
+            <span class="code-txt main-color glow-text-blue">Your Ultimate Gaming Destination</span>
+        </div>
+            <p>Discover the latest and greatest games right here at PlayBox! Whether you're into action-packed adventures, thrilling RPGs, or competitive multiplayer battles, we have something for every gamer. Explore top-rated titles, exclusive deals, and must-play classics—all in one place.</p>
+            <ul>
+                <li>
+                    <span class="pink">&#10022;</span> New Releases & Bestsellers
+                </li>
+                <li>
+                    <span class="pink">&#10022;</span> Exclusive Discounts & Special Offers
+                </li>
+                <li>
+                    <span class="pink">&#10022;</span> Games for Every Platform & Genre
+                </li>
+            </ul>
+            <p>Find your next favorite game below and start playing today!</p>
+        </div>
+    </section>
     `;
 }

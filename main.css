@@ -213,20 +213,16 @@ button.square2 {
     "mainSection";
 }
 
+.main-side-padding {
+  padding: 0 5%;
+}
 main {
   grid-area: mainSection;
-  padding: 0 5%;
   height: 100%;
   min-height: 100vh;
-
   background-color: var(--color-dark-blue);
-  -webkit-box-shadow: 0px 0px 32px 0px var(--color-shadow);
-  -moz-box-shadow: 0px 0px 32px 0px var(--color-shadow);
-  box-shadow: 0px 0px 32px 0px var(--color-shadow);
 }
 
-@media screen and (max-width: 1400px) {
-}
 @media screen and (max-width: 800px) {
   .padding-sides {
     padding: 0 0;
