@@ -98,7 +98,7 @@ function filterButton() {
             ${model.data.filter.genre
               .map(
                 (genre) => /*HTML*/ `
-                <li>
+                <li class="hover-pink">
                     <input type="radio" name="filter_options" value="${genre}" id="${genre}" onclick="filterController(this.value)" ${model.input.currentFilter === genre ? "checked" : ""}>
                     <label for="${genre}">${genre}</label>
                 </li>

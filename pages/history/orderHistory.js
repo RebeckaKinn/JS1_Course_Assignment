@@ -13,7 +13,7 @@ export async function orderHistory() {
   const content = await getOrderInformation();
   return /*HTML*/ `
         <section class="main-side-padding">
-            <h1 class="main-color">Order History</h1>
+            <h1 class="main-color code-txt light-txt lowercase">Order History</h1>
             <ul>${content}</ul>
         </section>
     `;

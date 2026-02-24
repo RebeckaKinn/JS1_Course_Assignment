@@ -38,7 +38,7 @@ export function cartView() {
            model.input.cart.length <= 0
              ? /*HTML*/ `
             <div class="flex col justify-content-center align-items-center">
-                <h2>Looks like your cart is empty!</h2>
+                <h2 class="code-txt light-txt lowercase">Looks like your cart is empty!</h2>
                 <button onclick="changePage('home')" class="square square2">Get shoppin'</button>
             </div>
             `
@@ -67,7 +67,7 @@ export function cartView() {
 function displayCartIcon() {
   return /*HTML*/ `
     <input type="checkbox" id="cart" class="hidden" ${model.app.cartControls && "checked"}>
-    <label for="cart" onclick="cartIconToggle()" class="code-txt flex align-items-center main-color pointer lowercase">Cart
+    <label for="cart" onclick="cartIconToggle()" class="code-txt flex align-items-center main-color pointer lowercase hover-pink">Cart
         <span class="cart-icon">
         <svg width="20" height="20" viewBox="0 0 51 51" fill="none" xmlns="http://www.w3.org/2000/svg">
         <g clip-path="url(#clip0_722_2290)">

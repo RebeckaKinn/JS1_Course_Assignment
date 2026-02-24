@@ -14,6 +14,12 @@ header {
   justify-content: space-between;
   align-items: center;
 }
+.hover-pink {
+  transition: transform 0.2s ease-in-out;
+}
+.hover-pink:hover {
+  color: var(--color-hot-pink);
+}
 
 .logo {
   width: auto;
@@ -26,11 +32,6 @@ header {
     width: 100%;
     object-fit: fill;
   }
-}
-
-.logo:hover,
-.cart-icon:hover {
-  scale: 1.2;
 }
 
 .header-logo {
@@ -191,10 +192,6 @@ header {
   button {
     padding: 15px 30px !important;
   }
-}
-
-.pointer {
-  cursor: pointer;
 }
 
 @media screen and (min-width: 800px) {
