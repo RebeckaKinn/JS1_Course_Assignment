@@ -52,7 +52,17 @@ async function displayContent() {
                         <li><p>Age Rating:</p><p class="white">${data.ageRating}</p></li>
                         <li><p>Release Date:</p><p class="white">${data.released}</p></li>
                         <li><p>Description:</p><p class="white">${data.description}</p></li>
-                        <li><p>Tags:</p><p class="white"><i>${data.tags.join(", ")}</i></p></li>
+                        <li>
+                                <ul class="flex tags">
+                                    ${data.tags
+                                      .map(
+                                        (item) => /*HTML*/ `
+                                <li>${item}</li>
+                                `,
+                                      )
+                                      .join("")}
+                                </ul>
+                        </li>
                     </ul>
                     <div class="flex row align-items-center justify-content-center">
                         <button class="square" onclick="handleAddToCart(this,'${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
