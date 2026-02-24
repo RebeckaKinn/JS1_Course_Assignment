@@ -161,7 +161,7 @@
 .frontPageBanner .overlay {
   background-color: rgba(0, 0, 0, 0.297);
   flex: 1;
-  padding: 2%;
+  padding: 5%;
 }
 .frontPageBanner .overlay * {
   max-width: 800px;
@@ -189,9 +189,11 @@
   .frontPageBanner {
     background-position: center center;
     background-size: cover;
+    min-height: 90vh;
   }
   .frontPageBanner .overlay {
     background-color: rgba(0, 0, 0, 0.379);
+    justify-content: center;
   }
 }
 @media screen and (max-width: 500px) {

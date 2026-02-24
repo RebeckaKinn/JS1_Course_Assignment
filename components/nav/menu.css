@@ -2,7 +2,7 @@ header {
   grid-area: headerSection;
   position: sticky;
   top: 0;
-  max-width: 100%;
+  width: 100%;
   z-index: 20;
 
   padding: 0 5%;
@@ -211,9 +211,5 @@ header {
 @media screen and (max-width: 500px) {
   .header-logo p {
     display: none;
-  }
-
-  header {
-    padding: 0 2%;
   }
 }
