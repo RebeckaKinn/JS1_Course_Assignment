@@ -61,7 +61,7 @@ async function displayItems() {
 
                 <div class="flex col space-between">
                     <div class="flex row baseline">
-                        <h3 class="remove-margin product-title">${element.title}</h3>
+                        <h3 class="remove-margin product-title uppercase">${element.title}</h3>
                         <span class="fav-button">
                             ${element.favorite ? `&#9733;` : `&#9734;`}
                         </span>
@@ -104,7 +104,7 @@ async function displayItems() {
 function filterButton() {
   return /*HTML*/ `
     <fieldset class="dropdownFilter">
-        <legend class="filterButton" >Filter by <b>${model.input.currentFilter == "" ? "category" : model.input.currentFilter}</b></legend>
+        <legend class="filterButton code-txt" >Filter</legend>
         <ul class="filterOptions" id="filterOptions">
             ${model.data.filter.genre
               .map(
@@ -120,6 +120,7 @@ function filterButton() {
                 <p onclick="resetFilter()">Reset</p>
             </li>
         </ul>
+        <p>${model.input.currentFilter == "" ? "" : `by: <span class="code-txt pink">${model.input.currentFilter}</span>`}</p>
     </fieldset>
     `;
 }

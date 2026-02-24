@@ -72,6 +72,21 @@ button.square2 {
   border-bottom: 1px solid var(--color-hot-pink);
 }
 
+.code-txt {
+  font-family: var(--code-font);
+}
+
+.uppercase {
+  text-transform: uppercase;
+}
+.lowercase {
+  text-transform: lowercase;
+}
+
+.txt-break-none {
+  white-space: nowrap;
+}
+
 .flex {
   display: flex;
 }
