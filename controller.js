@@ -192,3 +192,10 @@ export function resetFilter() {
   model.input.currentFilter = "";
   updateView();
 }
+
+export function toTop() {
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth",
+  });
+}
