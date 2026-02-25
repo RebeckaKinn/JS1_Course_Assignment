@@ -42,11 +42,9 @@ async function displayItems() {
       console.log(element);
       items += /*HTML*/ `
             <section class="product-item">
-
                 <div onclick="chosenProduct('${element.id}')" class="list-image">
                     <img src="${element.image.url}" alt="${element.image.alt}">
                 </div>
-
                 <div style="background-image: url('${element.image.url}');" class="card-information">
                     <div class="flex col space-between information">
                     <div class="flex space-between row baseline">
@@ -55,9 +53,6 @@ async function displayItems() {
                             ${element.favorite ? `&#9733;` : `&#9734;`}
                         </span>
                     </div>
-
-                   
-                    
                     <div class="flex col gap-5">
                     <div class="flex row align-items-baseline gap-5">
                     <button class="remove-padding pink glow-text pointer" onclick="handleAddToCart(this, '${element.id}', '${element.title}', ${element.price}, ${element.discountedPrice}, ${element.onSale}, '${element.image.url}', '${element.image.alt}')">Add to Cart</button>
@@ -82,17 +77,9 @@ async function displayItems() {
                         </ul>
                     </div>
                         </div>
-
-                   
                         <button class="square " onclick="chosenProduct('${element.id}')">View</button>
-                        
-                    
                     </div>
                 </div>
-
-
-
-
             </section>
             `;
     });

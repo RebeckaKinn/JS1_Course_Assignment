@@ -1,5 +1,5 @@
 import { model } from "./model.js";
-import { changePage, renderPage, toTop } from "./controller.js";
+import { changePage, renderPage } from "./controller.js";
 import { backButton } from "./components/backButton.js";
 import { loading } from "./components/loading/loadingMessage.js";
 import { errorMessage } from "./components/errorMessage/errorMessage.js";
@@ -40,3 +40,4 @@ export async function updateView() {
     model.app.display.innerHTML = errorMessage();
   }
 }
+//

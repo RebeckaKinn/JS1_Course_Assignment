@@ -13,7 +13,7 @@ export async function productView() {
   if (content == null) productNotFound();
   else
     return /*HTML*/ `
-        <section class="main-side-padding">${content}</section>
+        <section class="">${content}</section>
     `;
 }
 
@@ -26,49 +26,64 @@ async function displayContent() {
     }
 
     return /*HTML*/ `
-            <div class="single-product-layout">
+        <section class="single-product-container">
+            <div class="top-banner">
+                <div></div>
+            </div>
+
+
+            <div class="single-product-layout main-side-padding">
                 <div class="product-image">
                     <img src="${data.image.url}" alt="${data.image.alt}">
                 </div>
 
+                <div class="flex col gap-1rem">
                 <div class="flex col">
-                    <div class="flex row baseline space-between">
-                        <h1 class="remove-margin product-title full-width white">${data.title}</h1>
-                        <div class="flex row baseline">
-                            <div class="fav-button">
+                    <div class="flex row baseline">
+                        <h1 class="product-title full-width main-color">${data.title}</h1>
+                        
+                    </div>
+                        <div class="flex row gap-1rem">
+                            <p class="pink code-txt remove-margin">${data.ageRating},</p>
+                            <p class="pink code-txt remove-margin"><i>${data.genre}</i></p>
+
+                        </div>
+                        <p class="pink code-txt remove-margin"><i>${data.released}</i></p>
+                        
+                    </div>
+
+                    <ul class="flex tags">
+                          ${data.tags
+                            .map(
+                              (item) => /*HTML*/ `
+                                <li>${item}</li>
+                                `,
+                            )
+                            .join("")}
+                    </ul>
+                    <p class="white light-txt text-gap">${data.description}</p>
+                    <div class="flex row baseline">
+                            <i class="pink code-txt">Add to favorites: </i>
+                            <div class="fav-button remove-margin">
                                 ${data.favorite ? `&#9733;` : `&#9734;`}
-                            </div>
-                            <div class="flex row align-items-center gap-5">
+                            </div>  
+                        </div>
+                    <div class="flex row align-items-center gap-1rem">
+                        <button class="square square2 glow-blue" onclick="handleAddToCart(this,'${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
+                        <div class="flex row align-items-center gap-5">
                                 ${
                                   data.onSale
-                                    ? `<p class="discount">${data.price}</p> <p class="red price">${data.discountedPrice}</p>`
-                                    : `<p class="price white">${data.price}</p>`
+                                    ? `
+                                    <p class="discount remove-margin">$${data.price}</p> 
+                                    <p class="pink price remove-margin">$${data.discountedPrice}</p>
+                                    `
+                                    : `<p class="price remove-margin">$${data.price}</p>`
                                 }
                             </div>
                         </div>
-                    </div>
-                    <ul class="product-info">
-                        <li><p>Genre:</p><p class="white"><i>${data.genre}</i></p></li>
-                        <li><p>Age Rating:</p><p class="white">${data.ageRating}</p></li>
-                        <li><p>Release Date:</p><p class="white">${data.released}</p></li>
-                        <li><p>Description:</p><p class="white">${data.description}</p></li>
-                        <li>
-                                <ul class="flex tags">
-                                    ${data.tags
-                                      .map(
-                                        (item) => /*HTML*/ `
-                                <li>${item}</li>
-                                `,
-                                      )
-                                      .join("")}
-                                </ul>
-                        </li>
-                    </ul>
-                    <div class="flex row align-items-center justify-content-center">
-                        <button class="square" onclick="handleAddToCart(this,'${data.id}', '${data.title}', ${data.price}, ${data.discountedPrice}, ${data.onSale}, '${data.image.url}', '${data.image.alt}')">Add to Cart</button>
-                    </div>
                 </div>
             </div>
+            </section>
         `;
   } catch (error) {
     console.error(error.message);

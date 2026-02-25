@@ -99,6 +99,9 @@ button:hover {
 .light-txt {
   font-weight: 200;
 }
+.text-gap {
+  letter-spacing: 1px;
+}
 
 .flex {
   display: flex;
