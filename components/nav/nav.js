@@ -13,7 +13,7 @@ export function nav() {
             </div>
             <p class="code-txt glow-text">PlayBox</p>
         </div>
-        <ul class="flex row align-items-center gap-10 ">
+        <ul class="flex row align-items-center gap-1rem ">
             <li onclick="changePage('home')" class="code-txt pink pointer txt-break-none lowercase hover-pink">Home</li>
             <li onclick="changePage('orderHistory')" class="code-txt main-color pointer txt-break-none lowercase hover-pink">Order History</li>
             <li>${cartView()}</li>
