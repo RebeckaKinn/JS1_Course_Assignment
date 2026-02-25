@@ -1,15 +1,15 @@
-.red{
-    color: var(--color-highlighted);
+.red {
+  color: var(--color-highlighted);
 }
 
-.main-color{
-    color: var(--color-main);
+.main-color {
+  color: var(--color-main);
 }
 
-.white{
-    color: var(--color-white);
+.white {
+  color: var(--color-white);
 }
 
-.pink{
-    color: var(--color-hot-pink);
+.pink {
+  color: var(--color-hot-pink);
 }

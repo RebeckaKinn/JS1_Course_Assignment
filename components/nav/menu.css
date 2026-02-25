@@ -156,9 +156,10 @@ header {
 }
 
 .cart-item {
-  background-color: #66c0f447;
+  background-color: #000000cb;
+  border-bottom: 1px solid var(--color-hot-pink);
+  backdrop-filter: 10px;
   padding: 10px;
-  border-radius: 8px;
 }
 
 .cart-product {
