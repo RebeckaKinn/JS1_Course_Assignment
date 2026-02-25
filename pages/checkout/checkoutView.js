@@ -9,6 +9,7 @@ import {
 } from "../../controller.js";
 import { cartDisplay } from "../../components/nav/cart.js";
 import { errorMessage } from "../../components/errorMessage/errorMessage.js";
+import { backButton } from "../../components/backButton.js";
 
 window.removeFromCart = removeFromCart;
 window.checkoutHandeling = checkoutHandeling;
@@ -24,6 +25,7 @@ export async function checkoutView() {
   if (content === null) return errorMessage();
 
   return /*HTML*/ `
+  ${backButton()}
     <div class="full-height-vh flex col align-items-center full-width main-side-padding">
         <h1 class="main-color">Checkout</h1>
         <div>

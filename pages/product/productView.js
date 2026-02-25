@@ -3,6 +3,7 @@ import { fetchProduct } from "../../api.js";
 import { handleAddToCart } from "../../controller.js";
 import { errorMessage } from "../../components/errorMessage/errorMessage.js";
 import { productNotFound } from "../../components/errorMessage/noProductsFound.js";
+import { backButton } from "../../components/backButton.js";
 
 window.handleAddToCart = handleAddToCart;
 window.errorMessage = errorMessage;
@@ -13,7 +14,10 @@ export async function productView() {
   if (content == null) productNotFound();
   else
     return /*HTML*/ `
-        <section class="">${content}</section>
+        <section>
+        ${backButton()}
+        ${content}
+        </section>
     `;
 }
 

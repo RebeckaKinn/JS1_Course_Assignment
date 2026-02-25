@@ -30,7 +30,6 @@ export async function updateView() {
             ${nav()}
             </header>
             <main>
-            ${model.app.currentPage !== "home" ? backButton() : ""}
                 ${content}
             </main>
         `;

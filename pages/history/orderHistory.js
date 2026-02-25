@@ -12,7 +12,7 @@ window.errorMessage = errorMessage;
 export async function orderHistory() {
   const content = await getOrderInformation();
   return /*HTML*/ `
-        <section class="main-side-padding">
+        <section class="main-side-padding flex col gap-1rem">
             <h1 class="main-color code-txt light-txt lowercase">Order History</h1>
             <ul>${content}</ul>
         </section>

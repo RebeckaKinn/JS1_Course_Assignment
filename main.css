@@ -235,6 +235,7 @@ button:hover {
 .main-side-padding {
   padding: 0 5%;
 }
+
 main {
   grid-area: mainSection;
   height: 100%;
