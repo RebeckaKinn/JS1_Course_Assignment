@@ -51,12 +51,15 @@ header {
   display: none;
 }
 
+.back-button-container {
+  position: fixed;
+}
 .back-button {
-  justify-self: flex-start;
   margin: 10px 0;
 
   button {
-    padding: 10%;
+    padding: 10px;
+    margin-left: -5px;
     border-radius: 0.2rem;
 
     border: 1px solid var(--color-hot-pink);
