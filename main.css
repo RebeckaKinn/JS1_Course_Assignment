@@ -44,6 +44,7 @@ button.circle {
   padding-left: 6%;
   padding-right: 5%;
   margin: 0 5%;
+  aspect-ratio: 1/1;
 }
 button.square {
   max-width: 200px;

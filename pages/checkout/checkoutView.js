@@ -27,9 +27,9 @@ export async function checkoutView() {
   return /*HTML*/ `
   ${backButton()}
     <div class="full-height-vh flex col align-items-center full-width main-side-padding">
-        <h1 class="main-color">Checkout</h1>
+        <h1 class="code-txt light-txt pink">Checkout</h1>
         <div>
-            <h2>${getAmountOfItemsInCart()} item(s) in cart</h2>
+            <h2 class="code-txt light-txt main-color">x ${getAmountOfItemsInCart()}</h2>
         </div>
         <section class="full-width padding-sides">${content}</section>
         <section>
