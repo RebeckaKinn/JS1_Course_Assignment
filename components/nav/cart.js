@@ -44,15 +44,15 @@ export function cartView() {
             `
              : /*HTML*/ `
             
-            <div class="flex-space-between">
-                <h2>Shopping Cart</h2>
-                <h2>${getAmountOfItemsInCart()} items</h2>
+            <div class="flex gap-1rem full-width">
+                <h2 class="code-txt light-txt pink">Shopping Cart</h2>
+                <h2 class="code-txt light-txt main-color">x ${getAmountOfItemsInCart()}</h2>
             </div>
             <section class="full-width">${cartDisplay() === null ? `Empty` : cartDisplay()}</section>
             <section class="full-height flex-space-between-col">
                 <p class="width-30 flex-space-between">
-                    <b>Total:</b>
-                    <b>$${calculateTotal(model.input.cart)}</b>
+                    <b class="code-txt">Total:</b>
+                    <b class="code-txt pink">$${calculateTotal(model.input.cart)}</b>
                 </p>
                 <div class="checkout-button">
                     <button class="square square2" onclick="changePage('${model.app.pages[2].name}')">Checkout</button>
@@ -83,11 +83,11 @@ export function cartDisplay() {
 
   return /*HTML*/ `
     <div class="cart-items"> 
-        <div class="cart-grid cart-header">
-            <b>PRODUCT DETAILS</b>
-            <b>QTY</b>
-            <b>PRICE</b>
-            <b>TOTAL</b>
+        <div class="cart-grid cart-header code-txt lowercase light-txt main-color">
+            <i>PRODUCT DETAILS</i>
+            <i>QTY</i>
+            <i>PRICE</i>
+            <i>TOTAL</i>
         </div>
 
         ${content
@@ -97,15 +97,18 @@ export function cartDisplay() {
             <div class="cart-product">
                 <img src="${element.image}" alt="${element.alt}">
                 <div>
-                    <h3 class="remove-margin">${element.title}</h3>
-                    <button class="remove-button" onclick="removeFromCart('${element.id}')">Remove</button>
+                    <h2 class="remove-margin light-txt">${element.title}</h2>
+                   
                 </div>
             </div>
 
+            <div class="flex col gap-1rem">
             <div class="cart-quantity">
                 <button class="circle" onclick="changeAmount('${element.id}', false)">&minus;</button>
                 <b>${element.amount}</b>
                 ${element.amount <= 4 ? `<button class="circle" onclick="changeAmount('${element.id}', true)">&plus;</button>` : ""}
+            </div>
+             <button class="remove-button code-txt pink" onclick="removeFromCart('${element.id}')">Remove</button>
             </div>
 
             <div class="cart-price">${
